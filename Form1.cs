@@ -11,15 +11,17 @@ using System.Threading;
 
 namespace clickerGame
 {
-    public partial class gameForm01 : Form
+    public partial class gameForm : Form
     {
-        public gameForm01()
+        public gameForm()
         {
             InitializeComponent();
         }
         private double money = 0;
+        private double totalMoney = 0;
         private double moneyPerRubberBand = 0.1;
         private double rubberBand = 0;
+        private double totalRubberBand = 0;
         private double rubberBandsPerClick = 1;
         bool broughtNews = false;
         int newsClicked = 0;
@@ -51,7 +53,7 @@ namespace clickerGame
                 newsWorker.ReportProgress(1);
             }
         }
-        private void newsWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        private void NewsWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
             newsBox.Text = Convert.ToString(rnd.Next(0, 100));
         }
@@ -60,19 +62,32 @@ namespace clickerGame
             if (type == "money")
             {
                 money = Math.Round(money, 2);
-                moneyAmountBox.Text = "$" + money;
+                if (money >= 10000000)
+                {
+                    moneyAmountBox.Text = ("$" + money.ToString("E8"));
+                }
+                else
+                {
+                    moneyAmountBox.Text = "$" + money;
+                }
             }
             else if (type == "rubberBand")
             {
                 rubberBand = Math.Round(rubberBand, 2);
-                rubberBandAmountBox.Text = Convert.ToString(rubberBand);
+                if (rubberBand >= 10000000)
+                {
+                    rubberBandAmountBox.Text = rubberBand.ToString("E8");
+                }
+                else
+                {
+                    rubberBandAmountBox.Text = Convert.ToString(rubberBand);
+                }
             }
             else
             {
                 errorLabel.Text = "Error: updateDisplay()";
             }
         }
-
         private void clickerButton_Click(object sender, EventArgs e)
         {
             rubberBand += rubberBandsPerClick;
@@ -82,6 +97,8 @@ namespace clickerGame
         private void moneyButton_Click(object sender, EventArgs e)
         {
             money += rubberBand * moneyPerRubberBand;
+            totalRubberBand += rubberBand;
+            totalMoney += rubberBand * moneyPerRubberBand;
             rubberBand = 0;
             updateDisplay("money");
             updateDisplay("rubberBand");
@@ -94,7 +111,5 @@ namespace clickerGame
             updateDisplay("money");
             updateDisplay("rubberBand");
         }
-
-
     }
 }

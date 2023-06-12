@@ -1,6 +1,6 @@
 ﻿namespace clickerGame
 {
-    partial class gameForm01
+    partial class gameForm
     {
         /// <summary>
         /// Required designer variable.
@@ -31,19 +31,18 @@
             this.clickerButton = new System.Windows.Forms.Button();
             this.clickerButtonLabel = new System.Windows.Forms.Label();
             this.mainPanel = new System.Windows.Forms.Panel();
-            this.moneyButton = new System.Windows.Forms.Button();
-            this.moneyButtonLabel = new System.Windows.Forms.Label();
-            this.RubberBands = new System.Windows.Forms.Label();
+            this.rubberBandAmountBox = new System.Windows.Forms.Label();
+            this.moneyAmountBox = new System.Windows.Forms.Label();
             this.Money = new System.Windows.Forms.Label();
+            this.RubberBands = new System.Windows.Forms.Label();
+            this.moneyButtonLabel = new System.Windows.Forms.Label();
+            this.moneyButton = new System.Windows.Forms.Button();
             this.newsButton = new System.Windows.Forms.Button();
             this.newsPanel = new System.Windows.Forms.Panel();
-            this.NotUsedYet = new System.Windows.Forms.Panel();
+            this.newsBox = new System.Windows.Forms.Label();
             this.errorLabel = new System.Windows.Forms.Label();
             this.testButton = new System.Windows.Forms.Button();
             this.TESTLABEL = new System.Windows.Forms.Label();
-            this.moneyAmountBox = new System.Windows.Forms.Label();
-            this.rubberBandAmountBox = new System.Windows.Forms.Label();
-            this.newsBox = new System.Windows.Forms.Label();
             this.idleUpgradePanel = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.newsWorker = new System.ComponentModel.BackgroundWorker();
@@ -87,24 +86,36 @@
             this.mainPanel.Size = new System.Drawing.Size(608, 139);
             this.mainPanel.TabIndex = 2;
             // 
-            // moneyButton
+            // rubberBandAmountBox
             // 
-            this.moneyButton.Location = new System.Drawing.Point(425, 20);
-            this.moneyButton.Name = "moneyButton";
-            this.moneyButton.Size = new System.Drawing.Size(152, 70);
-            this.moneyButton.TabIndex = 2;
-            this.moneyButton.Text = "Sell Rubber Bands";
-            this.moneyButton.UseVisualStyleBackColor = true;
-            this.moneyButton.Click += new System.EventHandler(this.moneyButton_Click);
+            this.rubberBandAmountBox.AutoSize = true;
+            this.rubberBandAmountBox.BackColor = System.Drawing.SystemColors.Window;
+            this.rubberBandAmountBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.rubberBandAmountBox.Location = new System.Drawing.Point(186, 37);
+            this.rubberBandAmountBox.Name = "rubberBandAmountBox";
+            this.rubberBandAmountBox.Size = new System.Drawing.Size(15, 15);
+            this.rubberBandAmountBox.TabIndex = 10;
+            this.rubberBandAmountBox.Text = "0";
             // 
-            // moneyButtonLabel
+            // moneyAmountBox
             // 
-            this.moneyButtonLabel.AutoSize = true;
-            this.moneyButtonLabel.Location = new System.Drawing.Point(422, 93);
-            this.moneyButtonLabel.Name = "moneyButtonLabel";
-            this.moneyButtonLabel.Size = new System.Drawing.Size(118, 13);
-            this.moneyButtonLabel.TabIndex = 3;
-            this.moneyButtonLabel.Text = "1 Rubber Band = $0.10";
+            this.moneyAmountBox.AutoSize = true;
+            this.moneyAmountBox.BackColor = System.Drawing.SystemColors.Window;
+            this.moneyAmountBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.moneyAmountBox.Location = new System.Drawing.Point(185, 94);
+            this.moneyAmountBox.Name = "moneyAmountBox";
+            this.moneyAmountBox.Size = new System.Drawing.Size(21, 15);
+            this.moneyAmountBox.TabIndex = 9;
+            this.moneyAmountBox.Text = "$0";
+            // 
+            // Money
+            // 
+            this.Money.AutoSize = true;
+            this.Money.Location = new System.Drawing.Point(182, 77);
+            this.Money.Name = "Money";
+            this.Money.Size = new System.Drawing.Size(42, 13);
+            this.Money.TabIndex = 7;
+            this.Money.Text = "Money:";
             // 
             // RubberBands
             // 
@@ -115,14 +126,24 @@
             this.RubberBands.TabIndex = 6;
             this.RubberBands.Text = "Rubber Bands:";
             // 
-            // Money
+            // moneyButtonLabel
             // 
-            this.Money.AutoSize = true;
-            this.Money.Location = new System.Drawing.Point(182, 77);
-            this.Money.Name = "Money";
-            this.Money.Size = new System.Drawing.Size(42, 13);
-            this.Money.TabIndex = 7;
-            this.Money.Text = "Money:";
+            this.moneyButtonLabel.AutoSize = true;
+            this.moneyButtonLabel.Location = new System.Drawing.Point(422, 93);
+            this.moneyButtonLabel.Name = "moneyButtonLabel";
+            this.moneyButtonLabel.Size = new System.Drawing.Size(118, 13);
+            this.moneyButtonLabel.TabIndex = 3;
+            this.moneyButtonLabel.Text = "1 Rubber Band = $0.10";
+            // 
+            // moneyButton
+            // 
+            this.moneyButton.Location = new System.Drawing.Point(425, 20);
+            this.moneyButton.Name = "moneyButton";
+            this.moneyButton.Size = new System.Drawing.Size(152, 70);
+            this.moneyButton.TabIndex = 2;
+            this.moneyButton.Text = "Sell Rubber Bands";
+            this.moneyButton.UseVisualStyleBackColor = true;
+            this.moneyButton.Click += new System.EventHandler(this.moneyButton_Click);
             // 
             // newsButton
             // 
@@ -144,12 +165,16 @@
             this.newsPanel.Size = new System.Drawing.Size(765, 51);
             this.newsPanel.TabIndex = 4;
             // 
-            // NotUsedYet
+            // newsBox
             // 
-            this.NotUsedYet.Location = new System.Drawing.Point(626, 94);
-            this.NotUsedYet.Name = "NotUsedYet";
-            this.NotUsedYet.Size = new System.Drawing.Size(150, 138);
-            this.NotUsedYet.TabIndex = 5;
+            this.newsBox.AutoSize = true;
+            this.newsBox.BackColor = System.Drawing.SystemColors.Window;
+            this.newsBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.newsBox.Location = new System.Drawing.Point(197, 18);
+            this.newsBox.Name = "newsBox";
+            this.newsBox.Size = new System.Drawing.Size(65, 15);
+            this.newsBox.TabIndex = 11;
+            this.newsBox.Text = "News Here!";
             // 
             // errorLabel
             // 
@@ -181,39 +206,6 @@
             this.TESTLABEL.TabIndex = 8;
             this.TESTLABEL.Text = "label1";
             // 
-            // moneyAmountBox
-            // 
-            this.moneyAmountBox.AutoSize = true;
-            this.moneyAmountBox.BackColor = System.Drawing.SystemColors.Window;
-            this.moneyAmountBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.moneyAmountBox.Location = new System.Drawing.Point(185, 94);
-            this.moneyAmountBox.Name = "moneyAmountBox";
-            this.moneyAmountBox.Size = new System.Drawing.Size(21, 15);
-            this.moneyAmountBox.TabIndex = 9;
-            this.moneyAmountBox.Text = "$0";
-            // 
-            // rubberBandAmountBox
-            // 
-            this.rubberBandAmountBox.AutoSize = true;
-            this.rubberBandAmountBox.BackColor = System.Drawing.SystemColors.Window;
-            this.rubberBandAmountBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.rubberBandAmountBox.Location = new System.Drawing.Point(186, 37);
-            this.rubberBandAmountBox.Name = "rubberBandAmountBox";
-            this.rubberBandAmountBox.Size = new System.Drawing.Size(15, 15);
-            this.rubberBandAmountBox.TabIndex = 10;
-            this.rubberBandAmountBox.Text = "0";
-            // 
-            // newsBox
-            // 
-            this.newsBox.AutoSize = true;
-            this.newsBox.BackColor = System.Drawing.SystemColors.Window;
-            this.newsBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.newsBox.Location = new System.Drawing.Point(197, 18);
-            this.newsBox.Name = "newsBox";
-            this.newsBox.Size = new System.Drawing.Size(65, 15);
-            this.newsBox.TabIndex = 11;
-            this.newsBox.Text = "News Here!";
-            // 
             // idleUpgradePanel
             // 
             this.idleUpgradePanel.BackColor = System.Drawing.SystemColors.Window;
@@ -236,25 +228,24 @@
             // 
             this.newsWorker.WorkerReportsProgress = true;
             this.newsWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.newsWorker_DoWork);
-            this.newsWorker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.newsWorker_ProgressChanged);
+            this.newsWorker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.NewsWorker_ProgressChanged);
             // 
-            // gameForm01
+            // gameForm
             // 
             this.AccessibleRole = System.Windows.Forms.AccessibleRole.Grip;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 882);
+            this.ClientSize = new System.Drawing.Size(790, 882);
             this.Controls.Add(this.idleUpgradePanel);
             this.Controls.Add(this.TESTLABEL);
             this.Controls.Add(this.testButton);
             this.Controls.Add(this.errorLabel);
-            this.Controls.Add(this.NotUsedYet);
             this.Controls.Add(this.newsPanel);
             this.Controls.Add(this.mainPanel);
-            this.Name = "gameForm01";
+            this.Name = "gameForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Tag = "";
-            this.Text = "Welcome!";
+            this.Text = "Rubber Band Game";
             this.mainPanel.ResumeLayout(false);
             this.mainPanel.PerformLayout();
             this.newsPanel.ResumeLayout(false);
@@ -276,7 +267,6 @@
         private System.Windows.Forms.Label RubberBands;
         private System.Windows.Forms.Button newsButton;
         private System.Windows.Forms.Panel newsPanel;
-        private System.Windows.Forms.Panel NotUsedYet;
         private System.Windows.Forms.Label errorLabel;
         private System.Windows.Forms.Button testButton;
         private System.Windows.Forms.Label TESTLABEL;

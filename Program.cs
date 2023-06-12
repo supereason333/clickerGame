@@ -16,7 +16,7 @@ namespace clickerGame
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new gameForm01());
+            Application.Run(new gameForm());
         }
     }
 }

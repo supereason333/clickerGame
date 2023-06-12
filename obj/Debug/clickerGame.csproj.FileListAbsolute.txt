@@ -3,9 +3,9 @@ C:\Users\super\source\repos\mainGame\clickerGame\bin\Debug\clickerGame.exe
 C:\Users\super\source\repos\mainGame\clickerGame\bin\Debug\clickerGame.pdb
 C:\Users\super\source\repos\mainGame\clickerGame\obj\Debug\clickerGame.csproj.AssemblyReference.cache
 C:\Users\super\source\repos\mainGame\clickerGame\obj\Debug\clickerGame.csproj.SuggestedBindingRedirects.cache
-C:\Users\super\source\repos\mainGame\clickerGame\obj\Debug\clickerGame.gameForm01.resources
 C:\Users\super\source\repos\mainGame\clickerGame\obj\Debug\clickerGame.Properties.Resources.resources
 C:\Users\super\source\repos\mainGame\clickerGame\obj\Debug\clickerGame.csproj.GenerateResource.cache
 C:\Users\super\source\repos\mainGame\clickerGame\obj\Debug\clickerGame.csproj.CoreCompileInputs.cache
 C:\Users\super\source\repos\mainGame\clickerGame\obj\Debug\clickerGame.exe
 C:\Users\super\source\repos\mainGame\clickerGame\obj\Debug\clickerGame.pdb
+C:\Users\super\source\repos\mainGame\clickerGame\obj\Debug\clickerGame.gameForm.resources
