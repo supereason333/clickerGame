@@ -44,11 +44,31 @@
             this.testButton = new System.Windows.Forms.Button();
             this.TESTLABEL = new System.Windows.Forms.Label();
             this.idleUpgradePanel = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
+            this.ProductionLineGroupBox = new System.Windows.Forms.GroupBox();
+            this.productionLineButton = new System.Windows.Forms.Button();
+            this.ProductionLineRubberBandLabel = new System.Windows.Forms.Label();
+            this.productionLineAmountLabel = new System.Windows.Forms.Label();
+            this.MachineGroupBox = new System.Windows.Forms.GroupBox();
+            this.machineButton = new System.Windows.Forms.Button();
+            this.machineRubberBandLabel = new System.Windows.Forms.Label();
+            this.machineAmountLabel = new System.Windows.Forms.Label();
+            this.FactoryWorkerGroupBox = new System.Windows.Forms.GroupBox();
+            this.workerButtom = new System.Windows.Forms.Button();
+            this.workerRubberBandLabel = new System.Windows.Forms.Label();
+            this.workerAmountLabel = new System.Windows.Forms.Label();
             this.newsWorker = new System.ComponentModel.BackgroundWorker();
+            this.idleGeneratorWorker = new System.ComponentModel.BackgroundWorker();
+            this.rubberBandCostUpgrade = new System.Windows.Forms.Button();
+            this.sellAllButton = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.sellAllLabel = new System.Windows.Forms.Label();
             this.mainPanel.SuspendLayout();
             this.newsPanel.SuspendLayout();
             this.idleUpgradePanel.SuspendLayout();
+            this.ProductionLineGroupBox.SuspendLayout();
+            this.MachineGroupBox.SuspendLayout();
+            this.FactoryWorkerGroupBox.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // clickerButton
@@ -73,6 +93,7 @@
             // mainPanel
             // 
             this.mainPanel.BackColor = System.Drawing.SystemColors.Window;
+            this.mainPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.mainPanel.Controls.Add(this.rubberBandAmountBox);
             this.mainPanel.Controls.Add(this.moneyAmountBox);
             this.mainPanel.Controls.Add(this.Money);
@@ -93,9 +114,9 @@
             this.rubberBandAmountBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.rubberBandAmountBox.Location = new System.Drawing.Point(186, 37);
             this.rubberBandAmountBox.Name = "rubberBandAmountBox";
-            this.rubberBandAmountBox.Size = new System.Drawing.Size(15, 15);
+            this.rubberBandAmountBox.Size = new System.Drawing.Size(30, 15);
             this.rubberBandAmountBox.TabIndex = 10;
-            this.rubberBandAmountBox.Text = "0";
+            this.rubberBandAmountBox.Text = "0.00";
             // 
             // moneyAmountBox
             // 
@@ -104,9 +125,9 @@
             this.moneyAmountBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.moneyAmountBox.Location = new System.Drawing.Point(185, 94);
             this.moneyAmountBox.Name = "moneyAmountBox";
-            this.moneyAmountBox.Size = new System.Drawing.Size(21, 15);
+            this.moneyAmountBox.Size = new System.Drawing.Size(36, 15);
             this.moneyAmountBox.TabIndex = 9;
-            this.moneyAmountBox.Text = "$0";
+            this.moneyAmountBox.Text = "$0.00";
             // 
             // Money
             // 
@@ -158,6 +179,7 @@
             // newsPanel
             // 
             this.newsPanel.BackColor = System.Drawing.SystemColors.Window;
+            this.newsPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.newsPanel.Controls.Add(this.newsBox);
             this.newsPanel.Controls.Add(this.newsButton);
             this.newsPanel.Location = new System.Drawing.Point(12, 24);
@@ -208,21 +230,136 @@
             // 
             // idleUpgradePanel
             // 
+            this.idleUpgradePanel.AutoScroll = true;
             this.idleUpgradePanel.BackColor = System.Drawing.SystemColors.Window;
-            this.idleUpgradePanel.Controls.Add(this.button1);
+            this.idleUpgradePanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.idleUpgradePanel.Controls.Add(this.ProductionLineGroupBox);
+            this.idleUpgradePanel.Controls.Add(this.MachineGroupBox);
+            this.idleUpgradePanel.Controls.Add(this.FactoryWorkerGroupBox);
             this.idleUpgradePanel.Location = new System.Drawing.Point(12, 253);
             this.idleUpgradePanel.Name = "idleUpgradePanel";
-            this.idleUpgradePanel.Size = new System.Drawing.Size(261, 447);
+            this.idleUpgradePanel.Size = new System.Drawing.Size(264, 305);
             this.idleUpgradePanel.TabIndex = 9;
             // 
-            // button1
+            // ProductionLineGroupBox
             // 
-            this.button1.Location = new System.Drawing.Point(25, 22);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(152, 42);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.ProductionLineGroupBox.Controls.Add(this.productionLineButton);
+            this.ProductionLineGroupBox.Controls.Add(this.ProductionLineRubberBandLabel);
+            this.ProductionLineGroupBox.Controls.Add(this.productionLineAmountLabel);
+            this.ProductionLineGroupBox.Location = new System.Drawing.Point(13, 242);
+            this.ProductionLineGroupBox.Name = "ProductionLineGroupBox";
+            this.ProductionLineGroupBox.Size = new System.Drawing.Size(227, 108);
+            this.ProductionLineGroupBox.TabIndex = 15;
+            this.ProductionLineGroupBox.TabStop = false;
+            this.ProductionLineGroupBox.Text = "Production Line";
+            // 
+            // productionLineButton
+            // 
+            this.productionLineButton.Location = new System.Drawing.Point(9, 19);
+            this.productionLineButton.Name = "productionLineButton";
+            this.productionLineButton.Size = new System.Drawing.Size(205, 47);
+            this.productionLineButton.TabIndex = 0;
+            this.productionLineButton.Text = "Production Line $700";
+            this.productionLineButton.UseVisualStyleBackColor = true;
+            this.productionLineButton.Click += new System.EventHandler(this.productionLineButton_Click);
+            // 
+            // ProductionLineRubberBandLabel
+            // 
+            this.ProductionLineRubberBandLabel.AutoSize = true;
+            this.ProductionLineRubberBandLabel.Location = new System.Drawing.Point(6, 85);
+            this.ProductionLineRubberBandLabel.Name = "ProductionLineRubberBandLabel";
+            this.ProductionLineRubberBandLabel.Size = new System.Drawing.Size(138, 13);
+            this.ProductionLineRubberBandLabel.TabIndex = 12;
+            this.ProductionLineRubberBandLabel.Text = "0 Rubber Band Per Second";
+            // 
+            // productionLineAmountLabel
+            // 
+            this.productionLineAmountLabel.AutoSize = true;
+            this.productionLineAmountLabel.Location = new System.Drawing.Point(6, 69);
+            this.productionLineAmountLabel.Name = "productionLineAmountLabel";
+            this.productionLineAmountLabel.Size = new System.Drawing.Size(95, 13);
+            this.productionLineAmountLabel.TabIndex = 11;
+            this.productionLineAmountLabel.Text = "0 Production Lines";
+            // 
+            // MachineGroupBox
+            // 
+            this.MachineGroupBox.Controls.Add(this.machineButton);
+            this.MachineGroupBox.Controls.Add(this.machineRubberBandLabel);
+            this.MachineGroupBox.Controls.Add(this.machineAmountLabel);
+            this.MachineGroupBox.Location = new System.Drawing.Point(13, 128);
+            this.MachineGroupBox.Name = "MachineGroupBox";
+            this.MachineGroupBox.Size = new System.Drawing.Size(227, 108);
+            this.MachineGroupBox.TabIndex = 14;
+            this.MachineGroupBox.TabStop = false;
+            this.MachineGroupBox.Text = "Rubber Band Machine";
+            // 
+            // machineButton
+            // 
+            this.machineButton.Location = new System.Drawing.Point(9, 19);
+            this.machineButton.Name = "machineButton";
+            this.machineButton.Size = new System.Drawing.Size(205, 47);
+            this.machineButton.TabIndex = 0;
+            this.machineButton.Text = "Machine: $270";
+            this.machineButton.UseVisualStyleBackColor = true;
+            this.machineButton.Click += new System.EventHandler(this.machineButton_Click);
+            // 
+            // machineRubberBandLabel
+            // 
+            this.machineRubberBandLabel.AutoSize = true;
+            this.machineRubberBandLabel.Location = new System.Drawing.Point(6, 85);
+            this.machineRubberBandLabel.Name = "machineRubberBandLabel";
+            this.machineRubberBandLabel.Size = new System.Drawing.Size(138, 13);
+            this.machineRubberBandLabel.TabIndex = 12;
+            this.machineRubberBandLabel.Text = "0 Rubber Band Per Second";
+            // 
+            // machineAmountLabel
+            // 
+            this.machineAmountLabel.AutoSize = true;
+            this.machineAmountLabel.Location = new System.Drawing.Point(6, 69);
+            this.machineAmountLabel.Name = "machineAmountLabel";
+            this.machineAmountLabel.Size = new System.Drawing.Size(62, 13);
+            this.machineAmountLabel.TabIndex = 11;
+            this.machineAmountLabel.Text = "0 Machines";
+            // 
+            // FactoryWorkerGroupBox
+            // 
+            this.FactoryWorkerGroupBox.Controls.Add(this.workerButtom);
+            this.FactoryWorkerGroupBox.Controls.Add(this.workerRubberBandLabel);
+            this.FactoryWorkerGroupBox.Controls.Add(this.workerAmountLabel);
+            this.FactoryWorkerGroupBox.Location = new System.Drawing.Point(13, 14);
+            this.FactoryWorkerGroupBox.Name = "FactoryWorkerGroupBox";
+            this.FactoryWorkerGroupBox.Size = new System.Drawing.Size(227, 108);
+            this.FactoryWorkerGroupBox.TabIndex = 13;
+            this.FactoryWorkerGroupBox.TabStop = false;
+            this.FactoryWorkerGroupBox.Text = "Factory Worker";
+            // 
+            // workerButtom
+            // 
+            this.workerButtom.Location = new System.Drawing.Point(9, 19);
+            this.workerButtom.Name = "workerButtom";
+            this.workerButtom.Size = new System.Drawing.Size(205, 47);
+            this.workerButtom.TabIndex = 0;
+            this.workerButtom.Text = "Factory Worker $10 to Hire";
+            this.workerButtom.UseVisualStyleBackColor = true;
+            this.workerButtom.Click += new System.EventHandler(this.workerButtom_Click);
+            // 
+            // workerRubberBandLabel
+            // 
+            this.workerRubberBandLabel.AutoSize = true;
+            this.workerRubberBandLabel.Location = new System.Drawing.Point(6, 85);
+            this.workerRubberBandLabel.Name = "workerRubberBandLabel";
+            this.workerRubberBandLabel.Size = new System.Drawing.Size(138, 13);
+            this.workerRubberBandLabel.TabIndex = 12;
+            this.workerRubberBandLabel.Text = "0 Rubber Band Per Second";
+            // 
+            // workerAmountLabel
+            // 
+            this.workerAmountLabel.AutoSize = true;
+            this.workerAmountLabel.Location = new System.Drawing.Point(6, 69);
+            this.workerAmountLabel.Name = "workerAmountLabel";
+            this.workerAmountLabel.Size = new System.Drawing.Size(56, 13);
+            this.workerAmountLabel.TabIndex = 11;
+            this.workerAmountLabel.Text = "0 Workers";
             // 
             // newsWorker
             // 
@@ -230,12 +367,62 @@
             this.newsWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.newsWorker_DoWork);
             this.newsWorker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.NewsWorker_ProgressChanged);
             // 
+            // idleGeneratorWorker
+            // 
+            this.idleGeneratorWorker.WorkerReportsProgress = true;
+            this.idleGeneratorWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.idleGeneratorWorker_DoWork);
+            this.idleGeneratorWorker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.idleGeneratorWorker_ProgressChanged);
+            // 
+            // rubberBandCostUpgrade
+            // 
+            this.rubberBandCostUpgrade.Location = new System.Drawing.Point(626, 116);
+            this.rubberBandCostUpgrade.Name = "rubberBandCostUpgrade";
+            this.rubberBandCostUpgrade.Size = new System.Drawing.Size(152, 70);
+            this.rubberBandCostUpgrade.TabIndex = 10;
+            this.rubberBandCostUpgrade.Text = "Good rubber band prduction $0.20 per band $2600 to buy";
+            this.rubberBandCostUpgrade.UseVisualStyleBackColor = true;
+            this.rubberBandCostUpgrade.Click += new System.EventHandler(this.rubberBandUpgradeButton_Click);
+            // 
+            // sellAllButton
+            // 
+            this.sellAllButton.Location = new System.Drawing.Point(12, 14);
+            this.sellAllButton.Name = "sellAllButton";
+            this.sellAllButton.Size = new System.Drawing.Size(205, 51);
+            this.sellAllButton.TabIndex = 11;
+            this.sellAllButton.Text = "$15,000 Sacrfice all generators, rubber bands, money for 1.4 * rubber band produc" +
+    "tion";
+            this.sellAllButton.UseVisualStyleBackColor = true;
+            this.sellAllButton.Click += new System.EventHandler(this.sellAllButton_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.SystemColors.Window;
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.sellAllLabel);
+            this.panel1.Controls.Add(this.sellAllButton);
+            this.panel1.Location = new System.Drawing.Point(298, 253);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(322, 305);
+            this.panel1.TabIndex = 12;
+            // 
+            // sellAllLabel
+            // 
+            this.sellAllLabel.AutoSize = true;
+            this.sellAllLabel.BackColor = System.Drawing.SystemColors.Window;
+            this.sellAllLabel.Location = new System.Drawing.Point(12, 72);
+            this.sellAllLabel.Name = "sellAllLabel";
+            this.sellAllLabel.Size = new System.Drawing.Size(81, 13);
+            this.sellAllLabel.TabIndex = 12;
+            this.sellAllLabel.Text = "Producton * 1.0";
+            // 
             // gameForm
             // 
             this.AccessibleRole = System.Windows.Forms.AccessibleRole.Grip;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(790, 882);
+            this.ClientSize = new System.Drawing.Size(785, 882);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.rubberBandCostUpgrade);
             this.Controls.Add(this.idleUpgradePanel);
             this.Controls.Add(this.TESTLABEL);
             this.Controls.Add(this.testButton);
@@ -246,11 +433,20 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Tag = "";
             this.Text = "Rubber Band Game";
+            this.Load += new System.EventHandler(this.gameForm_Load);
             this.mainPanel.ResumeLayout(false);
             this.mainPanel.PerformLayout();
             this.newsPanel.ResumeLayout(false);
             this.newsPanel.PerformLayout();
             this.idleUpgradePanel.ResumeLayout(false);
+            this.ProductionLineGroupBox.ResumeLayout(false);
+            this.ProductionLineGroupBox.PerformLayout();
+            this.MachineGroupBox.ResumeLayout(false);
+            this.MachineGroupBox.PerformLayout();
+            this.FactoryWorkerGroupBox.ResumeLayout(false);
+            this.FactoryWorkerGroupBox.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -274,8 +470,24 @@
         private System.Windows.Forms.Label rubberBandAmountBox;
         private System.Windows.Forms.Label newsBox;
         private System.Windows.Forms.Panel idleUpgradePanel;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button workerButtom;
         private System.ComponentModel.BackgroundWorker newsWorker;
+        private System.ComponentModel.BackgroundWorker idleGeneratorWorker;
+        private System.Windows.Forms.Label workerRubberBandLabel;
+        private System.Windows.Forms.Label workerAmountLabel;
+        private System.Windows.Forms.GroupBox FactoryWorkerGroupBox;
+        private System.Windows.Forms.GroupBox ProductionLineGroupBox;
+        private System.Windows.Forms.Button productionLineButton;
+        private System.Windows.Forms.Label ProductionLineRubberBandLabel;
+        private System.Windows.Forms.Label productionLineAmountLabel;
+        private System.Windows.Forms.GroupBox MachineGroupBox;
+        private System.Windows.Forms.Button machineButton;
+        private System.Windows.Forms.Label machineRubberBandLabel;
+        private System.Windows.Forms.Label machineAmountLabel;
+        private System.Windows.Forms.Button rubberBandCostUpgrade;
+        private System.Windows.Forms.Button sellAllButton;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label sellAllLabel;
     }
 }
 
