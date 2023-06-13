@@ -229,7 +229,7 @@ namespace clickerGame
             }
         }
 
-        idleGenerator machine01 = new idleGenerator(270, 1.5, 14);
+        idleGenerator machine01 = new idleGenerator(270, 1.3, 20);
         private void machineButton_Click(object sender, EventArgs e)
         {
             if (money >= machine01.cost)
@@ -242,7 +242,7 @@ namespace clickerGame
             }
         }
 
-        idleGenerator productionLine01 = new idleGenerator(700, 1.5, 30);
+        idleGenerator productionLine01 = new idleGenerator(700, 1.3, 45);
         private void productionLineButton_Click(object sender, EventArgs e)
         {
             if (money >= productionLine01.cost)
@@ -292,3 +292,4 @@ namespace clickerGame
         }
     }
 }
+// funny thing h
