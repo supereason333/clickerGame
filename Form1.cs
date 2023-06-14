@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Threading;
 using System.Data.SqlTypes;
 using clickerGame;
+using System.Security.Cryptography.X509Certificates;
 
 namespace clickerGame
 {
@@ -92,6 +93,24 @@ namespace clickerGame
                     rubberBandAmountBox.Text = rubberBand.ToString("N");
                 }
             }
+            else if (type == "idleGenerator")
+            {
+                workerAmountLabel.Text = Convert.ToString(worker01.amount) + " Workers";
+                workerRubberBandLabel.Text = Convert.ToString(worker01.rubberBandPerSecond * worker01.amount) + " Rubber Bands Per Second";
+                workerButtom.Text = "Factory Worker: $" + worker01.totalCost.ToString("N") + " To hire";
+
+                machineAmountLabel.Text = Convert.ToString(machine01.amount) + " Machines";
+                machineRubberBandLabel.Text = Convert.ToString(machine01.rubberBandPerSecond * machine01.amount) + " Rubber Bands Per Second";
+                machineButton.Text = "Machine: $" + machine01.totalCost.ToString("N");
+
+                productionLineAmountLabel.Text = Convert.ToString(productionLine01.amount) + " Production Lines";
+                ProductionLineRubberBandLabel.Text = Convert.ToString(productionLine01.rubberBandPerSecond * productionLine01.amount) + " Rubber Bands Per Second";
+                productionLineButton.Text = "Production Line: $" + productionLine01.totalCost.ToString("N");
+            }
+            else if (type == "rubberBandPerSecond")
+            {
+                rubberBandPerSecondLabel.Text = "RB/S: " + totalPerSecond;
+            }
             else
             {
                 errorLabel.Text = "Error: updateDisplay()";
@@ -115,8 +134,8 @@ namespace clickerGame
 
         private void testButton_Click(object sender, EventArgs e)
         {
-            //money += 100000;
-            //rubberBand += 100000;
+            money += 100000;
+            rubberBand += 100000;
             updateDisplay("money");
             updateDisplay("rubberBand");
         }
@@ -137,6 +156,7 @@ namespace clickerGame
             totalPerSecond = idleMultiplier * (worker01.totalPerSecond + machine01.totalPerSecond + productionLine01.totalPerSecond);
             rubberBand += totalPerSecond / 10;
             updateDisplay("rubberBand");
+            updateDisplay("rubberBandPerSecond");
         }
 
         private double rubberBandUpgradeCost = 2600;
@@ -216,42 +236,39 @@ namespace clickerGame
             }
         }
         
-        idleGenerator worker01 = new idleGenerator(10, 1.3, 4);
+        idleGenerator worker01 = new idleGenerator(10, 1.1, 4);
         private void workerButtom_Click(object sender, EventArgs e)
         {
-            if (money >= worker01.cost)
+            if (money >= worker01.totalCost)
             {
                 money -= worker01.buy();
                 updateDisplay("money");
-                workerAmountLabel.Text = Convert.ToString(worker01.amount) + " Workers";
-                workerRubberBandLabel.Text = Convert.ToString(worker01.rubberBandPerSecond * worker01.amount) + " Rubber Bands Per Second";
-                workerButtom.Text = "Factory Worker: $" + worker01.cost.ToString("N") + " To hire";
+                updateDisplay("idleGenerator");
             }
         }
+        private void workerUpgradeButton_Click(object sender, EventArgs e)
+        {
 
-        idleGenerator machine01 = new idleGenerator(270, 1.3, 20);
+        }
+        idleGenerator machine01 = new idleGenerator(270, 1.1, 20);
         private void machineButton_Click(object sender, EventArgs e)
         {
-            if (money >= machine01.cost)
+            if (money >= machine01.totalCost)
             {
                 money -= machine01.buy();
                 updateDisplay("money");
-                machineAmountLabel.Text = Convert.ToString(machine01.amount) + " Machines";
-                machineRubberBandLabel.Text = Convert.ToString(machine01.rubberBandPerSecond * machine01.amount) + " Rubber Bands Per Second";
-                machineButton.Text = "Machine: $" + machine01.cost.ToString("N");
+                updateDisplay("idleGenerator");
             }
         }
 
-        idleGenerator productionLine01 = new idleGenerator(700, 1.3, 45);
+        idleGenerator productionLine01 = new idleGenerator(700, 1.1, 45);
         private void productionLineButton_Click(object sender, EventArgs e)
         {
-            if (money >= productionLine01.cost)
+            if (money >= productionLine01.totalCost)
             {
                 money -= productionLine01.buy();
                 updateDisplay("money");
-                productionLineAmountLabel.Text = Convert.ToString(productionLine01.amount) + " Production Lines";
-                ProductionLineRubberBandLabel.Text = Convert.ToString(productionLine01.rubberBandPerSecond * productionLine01.amount) + " Rubber Bands Per Second";
-                productionLineButton.Text = "Production Line: $" + productionLine01.cost.ToString("N");
+                updateDisplay("idleGenerator");
             }
         }
 
@@ -260,12 +277,29 @@ namespace clickerGame
             if (money >= 15000)
             {
                 money -= 15000;
+                rubberBand = 0;
                 updateDisplay("money");
+                updateDisplay("rubberBand");
                 idleMultiplier = idleMultiplier * 1.4;
-                sellAllLabel.Text = "Production *" + idleMultiplier;
+                sellAllLabel.Text = "Production * " + idleMultiplier;
                 sellAllButton.Enabled = false;
+
+                worker01.clear();
+                machine01.clear();
+                productionLine01.clear();
+                updateDisplay("idleGenerator");
             }
         }
+
+        private void clrButton_Click(object sender, EventArgs e)
+        {
+            worker01.clear();
+            machine01.clear();
+            productionLine01.clear();
+            updateDisplay("idleGenerator");
+        }
+
+
     }
     class idleGenerator
     {
@@ -274,21 +308,49 @@ namespace clickerGame
         public double cost;
         public double costMultiplier;
         public double totalPerSecond;
+        public int upgradeAmount;
+        public double totalCost;
 
         public idleGenerator(int _cost, double _costMultiplier, double _rubberBandPerSecond)
         {
             cost = _cost;
             costMultiplier = _costMultiplier;
             rubberBandPerSecond = _rubberBandPerSecond;
+            totalCost = _cost;
+            upgradeAmount = 10;
             amount = 0;
         }
 
         public double buy()
         {
             amount++;
-            cost = cost * costMultiplier;
             totalPerSecond = rubberBandPerSecond * amount;
-            return cost / costMultiplier;
+            totalCost = cost * Math.Pow(costMultiplier, amount);
+            return cost * Math.Pow(costMultiplier, amount - 1);
+        }
+        public bool upgrade(double _rubberBandPerSecondAdd, string _multOrAdd)
+        {
+            if (_multOrAdd == "mult")
+            {
+                rubberBandPerSecond = rubberBandPerSecond * _rubberBandPerSecondAdd;
+                upgradeAmount += 10;
+                return true;
+            }
+            else if (_multOrAdd == "add")
+            {
+                rubberBandPerSecond += _rubberBandPerSecondAdd;
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        public void clear()
+        {   
+            amount = 0;
+            totalCost = cost * Math.Pow(costMultiplier, amount);
+            totalPerSecond = rubberBandPerSecond * amount;
         }
     }
 }

@@ -31,6 +31,7 @@
             this.clickerButton = new System.Windows.Forms.Button();
             this.clickerButtonLabel = new System.Windows.Forms.Label();
             this.mainPanel = new System.Windows.Forms.Panel();
+            this.rubberBandPerSecondLabel = new System.Windows.Forms.Label();
             this.rubberBandAmountBox = new System.Windows.Forms.Label();
             this.moneyAmountBox = new System.Windows.Forms.Label();
             this.Money = new System.Windows.Forms.Label();
@@ -61,7 +62,9 @@
             this.rubberBandCostUpgrade = new System.Windows.Forms.Button();
             this.sellAllButton = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.workerUpgradeButton = new System.Windows.Forms.Button();
             this.sellAllLabel = new System.Windows.Forms.Label();
+            this.clrButton = new System.Windows.Forms.Button();
             this.mainPanel.SuspendLayout();
             this.newsPanel.SuspendLayout();
             this.idleUpgradePanel.SuspendLayout();
@@ -94,6 +97,7 @@
             // 
             this.mainPanel.BackColor = System.Drawing.SystemColors.Window;
             this.mainPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.mainPanel.Controls.Add(this.rubberBandPerSecondLabel);
             this.mainPanel.Controls.Add(this.rubberBandAmountBox);
             this.mainPanel.Controls.Add(this.moneyAmountBox);
             this.mainPanel.Controls.Add(this.Money);
@@ -106,6 +110,15 @@
             this.mainPanel.Name = "mainPanel";
             this.mainPanel.Size = new System.Drawing.Size(608, 139);
             this.mainPanel.TabIndex = 2;
+            // 
+            // rubberBandPerSecondLabel
+            // 
+            this.rubberBandPerSecondLabel.AutoSize = true;
+            this.rubberBandPerSecondLabel.Location = new System.Drawing.Point(182, 57);
+            this.rubberBandPerSecondLabel.Name = "rubberBandPerSecondLabel";
+            this.rubberBandPerSecondLabel.Size = new System.Drawing.Size(46, 13);
+            this.rubberBandPerSecondLabel.TabIndex = 11;
+            this.rubberBandPerSecondLabel.Text = "RB/S: 0";
             // 
             // rubberBandAmountBox
             // 
@@ -259,7 +272,7 @@
             this.productionLineButton.Name = "productionLineButton";
             this.productionLineButton.Size = new System.Drawing.Size(205, 47);
             this.productionLineButton.TabIndex = 0;
-            this.productionLineButton.Text = "Production Line $700";
+            this.productionLineButton.Text = "Production Line $700.00";
             this.productionLineButton.UseVisualStyleBackColor = true;
             this.productionLineButton.Click += new System.EventHandler(this.productionLineButton_Click);
             // 
@@ -299,7 +312,7 @@
             this.machineButton.Name = "machineButton";
             this.machineButton.Size = new System.Drawing.Size(205, 47);
             this.machineButton.TabIndex = 0;
-            this.machineButton.Text = "Machine: $270";
+            this.machineButton.Text = "Machine: $270.00";
             this.machineButton.UseVisualStyleBackColor = true;
             this.machineButton.Click += new System.EventHandler(this.machineButton_Click);
             // 
@@ -339,7 +352,7 @@
             this.workerButtom.Name = "workerButtom";
             this.workerButtom.Size = new System.Drawing.Size(205, 47);
             this.workerButtom.TabIndex = 0;
-            this.workerButtom.Text = "Factory Worker $10 to Hire";
+            this.workerButtom.Text = "Factory Worker $10.00 to Hire";
             this.workerButtom.UseVisualStyleBackColor = true;
             this.workerButtom.Click += new System.EventHandler(this.workerButtom_Click);
             // 
@@ -389,8 +402,8 @@
             this.sellAllButton.Name = "sellAllButton";
             this.sellAllButton.Size = new System.Drawing.Size(205, 51);
             this.sellAllButton.TabIndex = 11;
-            this.sellAllButton.Text = "$15,000 Sacrfice all generators, rubber bands, money for 1.4 * rubber band produc" +
-    "tion";
+            this.sellAllButton.Text = "$15,000 Sacrfice all generators and rubber bands for 1.4 * rubber band production" +
+    "";
             this.sellAllButton.UseVisualStyleBackColor = true;
             this.sellAllButton.Click += new System.EventHandler(this.sellAllButton_Click);
             // 
@@ -398,12 +411,23 @@
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.Window;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.workerUpgradeButton);
             this.panel1.Controls.Add(this.sellAllLabel);
             this.panel1.Controls.Add(this.sellAllButton);
             this.panel1.Location = new System.Drawing.Point(298, 253);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(322, 305);
             this.panel1.TabIndex = 12;
+            // 
+            // workerUpgradeButton
+            // 
+            this.workerUpgradeButton.Location = new System.Drawing.Point(12, 88);
+            this.workerUpgradeButton.Name = "workerUpgradeButton";
+            this.workerUpgradeButton.Size = new System.Drawing.Size(205, 49);
+            this.workerUpgradeButton.TabIndex = 13;
+            this.workerUpgradeButton.Text = "Upgrade Worker ^ 1.1 costs 10 workers";
+            this.workerUpgradeButton.UseVisualStyleBackColor = true;
+            this.workerUpgradeButton.Click += new System.EventHandler(this.workerUpgradeButton_Click);
             // 
             // sellAllLabel
             // 
@@ -415,12 +439,23 @@
             this.sellAllLabel.TabIndex = 12;
             this.sellAllLabel.Text = "Producton * 1.0";
             // 
+            // clrButton
+            // 
+            this.clrButton.Location = new System.Drawing.Point(14, 722);
+            this.clrButton.Name = "clrButton";
+            this.clrButton.Size = new System.Drawing.Size(75, 23);
+            this.clrButton.TabIndex = 13;
+            this.clrButton.Text = "clear idle workers";
+            this.clrButton.UseVisualStyleBackColor = true;
+            this.clrButton.Click += new System.EventHandler(this.clrButton_Click);
+            // 
             // gameForm
             // 
             this.AccessibleRole = System.Windows.Forms.AccessibleRole.Grip;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(785, 882);
+            this.Controls.Add(this.clrButton);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.rubberBandCostUpgrade);
             this.Controls.Add(this.idleUpgradePanel);
@@ -463,7 +498,6 @@
         private System.Windows.Forms.Label RubberBands;
         private System.Windows.Forms.Button newsButton;
         private System.Windows.Forms.Panel newsPanel;
-        private System.Windows.Forms.Label errorLabel;
         private System.Windows.Forms.Button testButton;
         private System.Windows.Forms.Label TESTLABEL;
         private System.Windows.Forms.Label moneyAmountBox;
@@ -488,6 +522,10 @@
         private System.Windows.Forms.Button sellAllButton;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label sellAllLabel;
+        public System.Windows.Forms.Label errorLabel;
+        private System.Windows.Forms.Button workerUpgradeButton;
+        private System.Windows.Forms.Button clrButton;
+        private System.Windows.Forms.Label rubberBandPerSecondLabel;
     }
 }
 
