@@ -109,7 +109,7 @@ namespace clickerGame
             }
             else if (type == "rubberBandPerSecond")
             {
-                rubberBandPerSecondLabel.Text = "RB/S: " + totalPerSecond;
+                rubberBandPerSecondLabel.Text = "RB/S: " + totalPerSecond.ToString("N");
             }
             else
             {
@@ -134,8 +134,8 @@ namespace clickerGame
 
         private void testButton_Click(object sender, EventArgs e)
         {
-            money += 100000;
-            rubberBand += 100000;
+            //money += 100000;
+            //rubberBand += 100000;
             updateDisplay("money");
             updateDisplay("rubberBand");
         }
@@ -227,7 +227,7 @@ namespace clickerGame
                         rubberBandCostUpgrade.BackColor = Color.Cyan;
                         break;
                     case 126:
-                        rubberBandCostUpgrade.Text = "h?";
+                        rubberBandCostUpgrade.Text = "COMING SOON!";
                         rubberBandCostUpgrade.BackColor = Color.Green;
                         break;
 
@@ -248,7 +248,27 @@ namespace clickerGame
         }
         private void workerUpgradeButton_Click(object sender, EventArgs e)
         {
-
+            if (worker01.amount >= worker01.upgradeExpCost)
+            {
+                worker01.amount -= worker01.upgradeExpCost;
+                worker01.upgrade(1.1, "exp");
+                workerUpgradeExpButton.Text = "Upgrade Worker ^ 1.1 costs " + worker01.upgradeExpCost + " workers";
+                updateDisplay("idleGenerator");
+                UpgradeWorkerLabel.Text = ("Worker Efficiency ^ " + Math.Pow(1.1, worker01.expUpgradeTimes));
+            }
+        }
+        
+        private void workerUpgradeAddButton_Click(object sender, EventArgs e)
+        {
+            if (money >= worker01.upgradeAddCost)
+            {
+                money -= worker01.upgradeAddCost;
+                worker01.upgrade(10, "add");
+                updateDisplay("money");
+                updateDisplay("idleGenerator");
+                workerUpgradeAddButton.Text = "Upgrade Worker +10 costs $" + worker01.upgradeAddCost.ToString("N");
+                WorkerUpgradeAddLabel.Text = "Worker + " + worker01.totalUpgradeAddAmount + " / sec";
+            }
         }
         idleGenerator machine01 = new idleGenerator(270, 1.1, 20);
         private void machineButton_Click(object sender, EventArgs e)
@@ -261,7 +281,7 @@ namespace clickerGame
             }
         }
 
-        idleGenerator productionLine01 = new idleGenerator(700, 1.1, 45);
+        idleGenerator productionLine01 = new idleGenerator(700, 1.1, 60);
         private void productionLineButton_Click(object sender, EventArgs e)
         {
             if (money >= productionLine01.totalCost)
@@ -293,9 +313,9 @@ namespace clickerGame
 
         private void clrButton_Click(object sender, EventArgs e)
         {
-            worker01.clear();
-            machine01.clear();
-            productionLine01.clear();
+            //worker01.clear();
+            //machine01.clear();
+            //productionLine01.clear();
             updateDisplay("idleGenerator");
         }
 
@@ -308,8 +328,11 @@ namespace clickerGame
         public double cost;
         public double costMultiplier;
         public double totalPerSecond;
-        public int upgradeAmount;
+        public int upgradeExpCost;
+        public double upgradeAddCost;
         public double totalCost;
+        public int expUpgradeTimes;
+        public double totalUpgradeAddAmount;
 
         public idleGenerator(int _cost, double _costMultiplier, double _rubberBandPerSecond)
         {
@@ -317,7 +340,9 @@ namespace clickerGame
             costMultiplier = _costMultiplier;
             rubberBandPerSecond = _rubberBandPerSecond;
             totalCost = _cost;
-            upgradeAmount = 10;
+            expUpgradeTimes = 0;
+            upgradeAddCost = 1000;
+            upgradeExpCost = 10;
             amount = 0;
         }
 
@@ -328,27 +353,40 @@ namespace clickerGame
             totalCost = cost * Math.Pow(costMultiplier, amount);
             return cost * Math.Pow(costMultiplier, amount - 1);
         }
-        public bool upgrade(double _rubberBandPerSecondAdd, string _multOrAdd)
+        public bool upgrade(double _rubberBandPerSecondAdd, string _addType)
         {
-            if (_multOrAdd == "mult")
+            if (_addType == "mult")
             {
                 rubberBandPerSecond = rubberBandPerSecond * _rubberBandPerSecondAdd;
-                upgradeAmount += 10;
-                return true;
             }
-            else if (_multOrAdd == "add")
+            else if (_addType == "add")
             {
                 rubberBandPerSecond += _rubberBandPerSecondAdd;
-                return true;
+                totalUpgradeAddAmount += _rubberBandPerSecondAdd;
+                upgradeAddCost = Math.Round(upgradeAddCost * (costMultiplier + 0.3), 2);
+
+            }
+            else if (_addType == "exp")
+            {
+                rubberBandPerSecond = Math.Pow(rubberBandPerSecond, _rubberBandPerSecondAdd);
+                rubberBandPerSecond = Math.Round(rubberBandPerSecond, 2);
+                upgradeExpCost = upgradeExpCost * 2 + 20;
+                expUpgradeTimes++;
             }
             else
             {
                 return false;
-            }
+            }                
+            recalculateAmount();
+            return true;
         }
         public void clear()
         {   
             amount = 0;
+            recalculateAmount();
+        }
+        public void recalculateAmount()
+        {
             totalCost = cost * Math.Pow(costMultiplier, amount);
             totalPerSecond = rubberBandPerSecond * amount;
         }

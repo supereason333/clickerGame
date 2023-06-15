@@ -62,9 +62,12 @@
             this.rubberBandCostUpgrade = new System.Windows.Forms.Button();
             this.sellAllButton = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.workerUpgradeButton = new System.Windows.Forms.Button();
+            this.UpgradeWorkerLabel = new System.Windows.Forms.Label();
+            this.workerUpgradeExpButton = new System.Windows.Forms.Button();
             this.sellAllLabel = new System.Windows.Forms.Label();
             this.clrButton = new System.Windows.Forms.Button();
+            this.WorkerUpgradeAddLabel = new System.Windows.Forms.Label();
+            this.workerUpgradeAddButton = new System.Windows.Forms.Button();
             this.mainPanel.SuspendLayout();
             this.newsPanel.SuspendLayout();
             this.idleUpgradePanel.SuspendLayout();
@@ -411,7 +414,10 @@
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.Window;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel1.Controls.Add(this.workerUpgradeButton);
+            this.panel1.Controls.Add(this.WorkerUpgradeAddLabel);
+            this.panel1.Controls.Add(this.workerUpgradeAddButton);
+            this.panel1.Controls.Add(this.UpgradeWorkerLabel);
+            this.panel1.Controls.Add(this.workerUpgradeExpButton);
             this.panel1.Controls.Add(this.sellAllLabel);
             this.panel1.Controls.Add(this.sellAllButton);
             this.panel1.Location = new System.Drawing.Point(298, 253);
@@ -419,15 +425,25 @@
             this.panel1.Size = new System.Drawing.Size(322, 305);
             this.panel1.TabIndex = 12;
             // 
-            // workerUpgradeButton
+            // UpgradeWorkerLabel
             // 
-            this.workerUpgradeButton.Location = new System.Drawing.Point(12, 88);
-            this.workerUpgradeButton.Name = "workerUpgradeButton";
-            this.workerUpgradeButton.Size = new System.Drawing.Size(205, 49);
-            this.workerUpgradeButton.TabIndex = 13;
-            this.workerUpgradeButton.Text = "Upgrade Worker ^ 1.1 costs 10 workers";
-            this.workerUpgradeButton.UseVisualStyleBackColor = true;
-            this.workerUpgradeButton.Click += new System.EventHandler(this.workerUpgradeButton_Click);
+            this.UpgradeWorkerLabel.AutoSize = true;
+            this.UpgradeWorkerLabel.BackColor = System.Drawing.SystemColors.Window;
+            this.UpgradeWorkerLabel.Location = new System.Drawing.Point(12, 143);
+            this.UpgradeWorkerLabel.Name = "UpgradeWorkerLabel";
+            this.UpgradeWorkerLabel.Size = new System.Drawing.Size(109, 13);
+            this.UpgradeWorkerLabel.TabIndex = 14;
+            this.UpgradeWorkerLabel.Text = "Worker Efficiency ^ 1";
+            // 
+            // workerUpgradeExpButton
+            // 
+            this.workerUpgradeExpButton.Location = new System.Drawing.Point(12, 91);
+            this.workerUpgradeExpButton.Name = "workerUpgradeExpButton";
+            this.workerUpgradeExpButton.Size = new System.Drawing.Size(205, 49);
+            this.workerUpgradeExpButton.TabIndex = 13;
+            this.workerUpgradeExpButton.Text = "Upgrade Worker ^ 1.1 costs 10 workers";
+            this.workerUpgradeExpButton.UseVisualStyleBackColor = true;
+            this.workerUpgradeExpButton.Click += new System.EventHandler(this.workerUpgradeButton_Click);
             // 
             // sellAllLabel
             // 
@@ -448,6 +464,26 @@
             this.clrButton.Text = "clear idle workers";
             this.clrButton.UseVisualStyleBackColor = true;
             this.clrButton.Click += new System.EventHandler(this.clrButton_Click);
+            // 
+            // WorkerUpgradeAddLabel
+            // 
+            this.WorkerUpgradeAddLabel.AutoSize = true;
+            this.WorkerUpgradeAddLabel.BackColor = System.Drawing.SystemColors.Window;
+            this.WorkerUpgradeAddLabel.Location = new System.Drawing.Point(12, 214);
+            this.WorkerUpgradeAddLabel.Name = "WorkerUpgradeAddLabel";
+            this.WorkerUpgradeAddLabel.Size = new System.Drawing.Size(90, 13);
+            this.WorkerUpgradeAddLabel.TabIndex = 16;
+            this.WorkerUpgradeAddLabel.Text = "Worker + 0 / Sec";
+            // 
+            // workerUpgradeAddButton
+            // 
+            this.workerUpgradeAddButton.Location = new System.Drawing.Point(12, 162);
+            this.workerUpgradeAddButton.Name = "workerUpgradeAddButton";
+            this.workerUpgradeAddButton.Size = new System.Drawing.Size(205, 49);
+            this.workerUpgradeAddButton.TabIndex = 15;
+            this.workerUpgradeAddButton.Text = "Upgrade Worker +10 costs $1000";
+            this.workerUpgradeAddButton.UseVisualStyleBackColor = true;
+            this.workerUpgradeAddButton.Click += new System.EventHandler(this.workerUpgradeAddButton_Click);
             // 
             // gameForm
             // 
@@ -523,9 +559,12 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label sellAllLabel;
         public System.Windows.Forms.Label errorLabel;
-        private System.Windows.Forms.Button workerUpgradeButton;
+        private System.Windows.Forms.Button workerUpgradeExpButton;
         private System.Windows.Forms.Button clrButton;
         private System.Windows.Forms.Label rubberBandPerSecondLabel;
+        private System.Windows.Forms.Label UpgradeWorkerLabel;
+        private System.Windows.Forms.Label WorkerUpgradeAddLabel;
+        private System.Windows.Forms.Button workerUpgradeAddButton;
     }
 }
 
