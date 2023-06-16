@@ -62,12 +62,18 @@
             this.rubberBandCostUpgrade = new System.Windows.Forms.Button();
             this.sellAllButton = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.WorkerUpgradeAddLabel = new System.Windows.Forms.Label();
+            this.workerUpgradeAddButton = new System.Windows.Forms.Button();
             this.UpgradeWorkerLabel = new System.Windows.Forms.Label();
             this.workerUpgradeExpButton = new System.Windows.Forms.Button();
             this.sellAllLabel = new System.Windows.Forms.Label();
             this.clrButton = new System.Windows.Forms.Button();
-            this.WorkerUpgradeAddLabel = new System.Windows.Forms.Label();
-            this.workerUpgradeAddButton = new System.Windows.Forms.Button();
+            this.mainUpgradePanel = new System.Windows.Forms.Panel();
+            this.testPanel = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panelButton01 = new System.Windows.Forms.Button();
+            this.panelButton02 = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.mainPanel.SuspendLayout();
             this.newsPanel.SuspendLayout();
             this.idleUpgradePanel.SuspendLayout();
@@ -75,6 +81,9 @@
             this.MachineGroupBox.SuspendLayout();
             this.FactoryWorkerGroupBox.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.mainUpgradePanel.SuspendLayout();
+            this.testPanel.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // clickerButton
@@ -217,7 +226,7 @@
             // errorLabel
             // 
             this.errorLabel.AutoSize = true;
-            this.errorLabel.Location = new System.Drawing.Point(9, 763);
+            this.errorLabel.Location = new System.Drawing.Point(26, 106);
             this.errorLabel.Name = "errorLabel";
             this.errorLabel.Size = new System.Drawing.Size(55, 13);
             this.errorLabel.TabIndex = 6;
@@ -225,7 +234,7 @@
             // 
             // testButton
             // 
-            this.testButton.Location = new System.Drawing.Point(12, 780);
+            this.testButton.Location = new System.Drawing.Point(29, 54);
             this.testButton.Name = "testButton";
             this.testButton.Size = new System.Drawing.Size(75, 23);
             this.testButton.TabIndex = 7;
@@ -238,7 +247,7 @@
             this.TESTLABEL.AutoSize = true;
             this.TESTLABEL.BackColor = System.Drawing.SystemColors.Window;
             this.TESTLABEL.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.TESTLABEL.Location = new System.Drawing.Point(12, 748);
+            this.TESTLABEL.Location = new System.Drawing.Point(29, 88);
             this.TESTLABEL.Name = "TESTLABEL";
             this.TESTLABEL.Size = new System.Drawing.Size(37, 15);
             this.TESTLABEL.TabIndex = 8;
@@ -252,7 +261,7 @@
             this.idleUpgradePanel.Controls.Add(this.ProductionLineGroupBox);
             this.idleUpgradePanel.Controls.Add(this.MachineGroupBox);
             this.idleUpgradePanel.Controls.Add(this.FactoryWorkerGroupBox);
-            this.idleUpgradePanel.Location = new System.Drawing.Point(12, 253);
+            this.idleUpgradePanel.Location = new System.Drawing.Point(0, 3);
             this.idleUpgradePanel.Name = "idleUpgradePanel";
             this.idleUpgradePanel.Size = new System.Drawing.Size(264, 305);
             this.idleUpgradePanel.TabIndex = 9;
@@ -420,10 +429,30 @@
             this.panel1.Controls.Add(this.workerUpgradeExpButton);
             this.panel1.Controls.Add(this.sellAllLabel);
             this.panel1.Controls.Add(this.sellAllButton);
-            this.panel1.Location = new System.Drawing.Point(298, 253);
+            this.panel1.Location = new System.Drawing.Point(286, 3);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(322, 305);
             this.panel1.TabIndex = 12;
+            // 
+            // WorkerUpgradeAddLabel
+            // 
+            this.WorkerUpgradeAddLabel.AutoSize = true;
+            this.WorkerUpgradeAddLabel.BackColor = System.Drawing.SystemColors.Window;
+            this.WorkerUpgradeAddLabel.Location = new System.Drawing.Point(12, 214);
+            this.WorkerUpgradeAddLabel.Name = "WorkerUpgradeAddLabel";
+            this.WorkerUpgradeAddLabel.Size = new System.Drawing.Size(90, 13);
+            this.WorkerUpgradeAddLabel.TabIndex = 16;
+            this.WorkerUpgradeAddLabel.Text = "Worker + 0 / Sec";
+            // 
+            // workerUpgradeAddButton
+            // 
+            this.workerUpgradeAddButton.Location = new System.Drawing.Point(12, 162);
+            this.workerUpgradeAddButton.Name = "workerUpgradeAddButton";
+            this.workerUpgradeAddButton.Size = new System.Drawing.Size(205, 49);
+            this.workerUpgradeAddButton.TabIndex = 15;
+            this.workerUpgradeAddButton.Text = "Upgrade Worker +10 costs $1000";
+            this.workerUpgradeAddButton.UseVisualStyleBackColor = true;
+            this.workerUpgradeAddButton.Click += new System.EventHandler(this.workerUpgradeAddButton_Click);
             // 
             // UpgradeWorkerLabel
             // 
@@ -457,7 +486,7 @@
             // 
             // clrButton
             // 
-            this.clrButton.Location = new System.Drawing.Point(14, 722);
+            this.clrButton.Location = new System.Drawing.Point(29, 25);
             this.clrButton.Name = "clrButton";
             this.clrButton.Size = new System.Drawing.Size(75, 23);
             this.clrButton.TabIndex = 13;
@@ -465,39 +494,79 @@
             this.clrButton.UseVisualStyleBackColor = true;
             this.clrButton.Click += new System.EventHandler(this.clrButton_Click);
             // 
-            // WorkerUpgradeAddLabel
+            // mainUpgradePanel
             // 
-            this.WorkerUpgradeAddLabel.AutoSize = true;
-            this.WorkerUpgradeAddLabel.BackColor = System.Drawing.SystemColors.Window;
-            this.WorkerUpgradeAddLabel.Location = new System.Drawing.Point(12, 214);
-            this.WorkerUpgradeAddLabel.Name = "WorkerUpgradeAddLabel";
-            this.WorkerUpgradeAddLabel.Size = new System.Drawing.Size(90, 13);
-            this.WorkerUpgradeAddLabel.TabIndex = 16;
-            this.WorkerUpgradeAddLabel.Text = "Worker + 0 / Sec";
+            this.mainUpgradePanel.Controls.Add(this.idleUpgradePanel);
+            this.mainUpgradePanel.Controls.Add(this.panel1);
+            this.mainUpgradePanel.Location = new System.Drawing.Point(12, 269);
+            this.mainUpgradePanel.Name = "mainUpgradePanel";
+            this.mainUpgradePanel.Size = new System.Drawing.Size(608, 313);
+            this.mainUpgradePanel.TabIndex = 14;
             // 
-            // workerUpgradeAddButton
+            // testPanel
             // 
-            this.workerUpgradeAddButton.Location = new System.Drawing.Point(12, 162);
-            this.workerUpgradeAddButton.Name = "workerUpgradeAddButton";
-            this.workerUpgradeAddButton.Size = new System.Drawing.Size(205, 49);
-            this.workerUpgradeAddButton.TabIndex = 15;
-            this.workerUpgradeAddButton.Text = "Upgrade Worker +10 costs $1000";
-            this.workerUpgradeAddButton.UseVisualStyleBackColor = true;
-            this.workerUpgradeAddButton.Click += new System.EventHandler(this.workerUpgradeAddButton_Click);
+            this.testPanel.Controls.Add(this.panel2);
+            this.testPanel.Controls.Add(this.panel3);
+            this.testPanel.Location = new System.Drawing.Point(797, 24);
+            this.testPanel.Name = "testPanel";
+            this.testPanel.Size = new System.Drawing.Size(608, 313);
+            this.testPanel.TabIndex = 15;
+            this.testPanel.Visible = false;
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.SystemColors.Window;
+            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel3.Location = new System.Drawing.Point(286, 3);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(322, 305);
+            this.panel3.TabIndex = 15;
+            // 
+            // panelButton01
+            // 
+            this.panelButton01.Location = new System.Drawing.Point(12, 240);
+            this.panelButton01.Name = "panelButton01";
+            this.panelButton01.Size = new System.Drawing.Size(75, 23);
+            this.panelButton01.TabIndex = 16;
+            this.panelButton01.Text = "Main Upgrades";
+            this.panelButton01.UseVisualStyleBackColor = true;
+            this.panelButton01.Click += new System.EventHandler(this.panelButton01_Click);
+            // 
+            // panelButton02
+            // 
+            this.panelButton02.Location = new System.Drawing.Point(93, 240);
+            this.panelButton02.Name = "panelButton02";
+            this.panelButton02.Size = new System.Drawing.Size(75, 23);
+            this.panelButton02.TabIndex = 17;
+            this.panelButton02.Text = "Test Panel";
+            this.panelButton02.UseVisualStyleBackColor = true;
+            this.panelButton02.Click += new System.EventHandler(this.panelButton02_Click);
+            // 
+            // panel2
+            // 
+            this.panel2.AutoScroll = true;
+            this.panel2.BackColor = System.Drawing.SystemColors.Window;
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel2.Controls.Add(this.clrButton);
+            this.panel2.Controls.Add(this.errorLabel);
+            this.panel2.Controls.Add(this.testButton);
+            this.panel2.Controls.Add(this.TESTLABEL);
+            this.panel2.Location = new System.Drawing.Point(0, 3);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(264, 305);
+            this.panel2.TabIndex = 14;
             // 
             // gameForm
             // 
             this.AccessibleRole = System.Windows.Forms.AccessibleRole.Grip;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(785, 882);
-            this.Controls.Add(this.clrButton);
-            this.Controls.Add(this.panel1);
+            this.ClientSize = new System.Drawing.Size(1428, 609);
+            this.Controls.Add(this.panelButton02);
+            this.Controls.Add(this.panelButton01);
+            this.Controls.Add(this.testPanel);
+            this.Controls.Add(this.mainUpgradePanel);
             this.Controls.Add(this.rubberBandCostUpgrade);
-            this.Controls.Add(this.idleUpgradePanel);
-            this.Controls.Add(this.TESTLABEL);
-            this.Controls.Add(this.testButton);
-            this.Controls.Add(this.errorLabel);
             this.Controls.Add(this.newsPanel);
             this.Controls.Add(this.mainPanel);
             this.Name = "gameForm";
@@ -518,8 +587,11 @@
             this.FactoryWorkerGroupBox.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.mainUpgradePanel.ResumeLayout(false);
+            this.testPanel.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -565,6 +637,12 @@
         private System.Windows.Forms.Label UpgradeWorkerLabel;
         private System.Windows.Forms.Label WorkerUpgradeAddLabel;
         private System.Windows.Forms.Button workerUpgradeAddButton;
+        private System.Windows.Forms.Panel mainUpgradePanel;
+        private System.Windows.Forms.Panel testPanel;
+        private System.Windows.Forms.Button panelButton01;
+        private System.Windows.Forms.Button panelButton02;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel panel2;
     }
 }
 

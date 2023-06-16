@@ -30,10 +30,10 @@ namespace clickerGame
         bool broughtNews = false;
         int newsClicked = 0;
         Random rnd = new Random();
-
         private void gameForm_Load(object sender, EventArgs e)
         {
-
+            this.Size = new Size(800, 650);
+            this.CenterToScreen();
         }
 
         private void newsButton_Click(object sender, EventArgs e)
@@ -318,8 +318,32 @@ namespace clickerGame
             //productionLine01.clear();
             updateDisplay("idleGenerator");
         }
+        private int currentPanel;
+        private void switchPanel(int panelNumber)
+        {
+            mainUpgradePanel.Visible = false;
+            testPanel.Visible = false;
+            switch (panelNumber)
+            {
+                case 0:
+                    mainUpgradePanel.Visible = true;
+                    mainUpgradePanel.Location = new Point(12, 269);
+                    break;
+                case 1:
+                    testPanel.Visible = true;
+                    testPanel.Location = new Point(12, 269);
+                    break;
+            }
+        }
+        private void panelButton01_Click(object sender, EventArgs e)
+        {
+            switchPanel(0);
+        }
 
-
+        private void panelButton02_Click(object sender, EventArgs e)
+        {
+            switchPanel(1);
+        }
     }
     class idleGenerator
     {
