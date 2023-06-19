@@ -70,10 +70,14 @@
             this.clrButton = new System.Windows.Forms.Button();
             this.mainUpgradePanel = new System.Windows.Forms.Panel();
             this.testPanel = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.rubberBandUpgradePanel = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.panelButton00 = new System.Windows.Forms.Button();
             this.panelButton01 = new System.Windows.Forms.Button();
             this.panelButton02 = new System.Windows.Forms.Button();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.mainPanel.SuspendLayout();
             this.newsPanel.SuspendLayout();
             this.idleUpgradePanel.SuspendLayout();
@@ -84,6 +88,8 @@
             this.mainUpgradePanel.SuspendLayout();
             this.testPanel.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.rubberBandUpgradePanel.SuspendLayout();
+            this.panel5.SuspendLayout();
             this.SuspendLayout();
             // 
             // clickerButton
@@ -118,7 +124,7 @@
             this.mainPanel.Controls.Add(this.moneyButton);
             this.mainPanel.Controls.Add(this.clickerButton);
             this.mainPanel.Controls.Add(this.clickerButtonLabel);
-            this.mainPanel.Location = new System.Drawing.Point(12, 94);
+            this.mainPanel.Location = new System.Drawing.Point(12, 82);
             this.mainPanel.Name = "mainPanel";
             this.mainPanel.Size = new System.Drawing.Size(608, 139);
             this.mainPanel.TabIndex = 2;
@@ -207,7 +213,7 @@
             this.newsPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.newsPanel.Controls.Add(this.newsBox);
             this.newsPanel.Controls.Add(this.newsButton);
-            this.newsPanel.Location = new System.Drawing.Point(12, 24);
+            this.newsPanel.Location = new System.Drawing.Point(12, 12);
             this.newsPanel.Name = "newsPanel";
             this.newsPanel.Size = new System.Drawing.Size(765, 51);
             this.newsPanel.TabIndex = 4;
@@ -400,9 +406,9 @@
             // 
             // rubberBandCostUpgrade
             // 
-            this.rubberBandCostUpgrade.Location = new System.Drawing.Point(626, 116);
+            this.rubberBandCostUpgrade.Location = new System.Drawing.Point(14, 11);
             this.rubberBandCostUpgrade.Name = "rubberBandCostUpgrade";
-            this.rubberBandCostUpgrade.Size = new System.Drawing.Size(152, 70);
+            this.rubberBandCostUpgrade.Size = new System.Drawing.Size(205, 67);
             this.rubberBandCostUpgrade.TabIndex = 10;
             this.rubberBandCostUpgrade.Text = "Good rubber band prduction $0.20 per band $2600 to buy";
             this.rubberBandCostUpgrade.UseVisualStyleBackColor = true;
@@ -410,9 +416,9 @@
             // 
             // sellAllButton
             // 
-            this.sellAllButton.Location = new System.Drawing.Point(12, 14);
+            this.sellAllButton.Location = new System.Drawing.Point(14, 84);
             this.sellAllButton.Name = "sellAllButton";
-            this.sellAllButton.Size = new System.Drawing.Size(205, 51);
+            this.sellAllButton.Size = new System.Drawing.Size(205, 61);
             this.sellAllButton.TabIndex = 11;
             this.sellAllButton.Text = "$15,000 Sacrfice all generators and rubber bands for 1.4 * rubber band production" +
     "";
@@ -427,8 +433,6 @@
             this.panel1.Controls.Add(this.workerUpgradeAddButton);
             this.panel1.Controls.Add(this.UpgradeWorkerLabel);
             this.panel1.Controls.Add(this.workerUpgradeExpButton);
-            this.panel1.Controls.Add(this.sellAllLabel);
-            this.panel1.Controls.Add(this.sellAllButton);
             this.panel1.Location = new System.Drawing.Point(286, 3);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(322, 305);
@@ -438,7 +442,7 @@
             // 
             this.WorkerUpgradeAddLabel.AutoSize = true;
             this.WorkerUpgradeAddLabel.BackColor = System.Drawing.SystemColors.Window;
-            this.WorkerUpgradeAddLabel.Location = new System.Drawing.Point(12, 214);
+            this.WorkerUpgradeAddLabel.Location = new System.Drawing.Point(12, 138);
             this.WorkerUpgradeAddLabel.Name = "WorkerUpgradeAddLabel";
             this.WorkerUpgradeAddLabel.Size = new System.Drawing.Size(90, 13);
             this.WorkerUpgradeAddLabel.TabIndex = 16;
@@ -446,11 +450,11 @@
             // 
             // workerUpgradeAddButton
             // 
-            this.workerUpgradeAddButton.Location = new System.Drawing.Point(12, 162);
+            this.workerUpgradeAddButton.Location = new System.Drawing.Point(12, 86);
             this.workerUpgradeAddButton.Name = "workerUpgradeAddButton";
             this.workerUpgradeAddButton.Size = new System.Drawing.Size(205, 49);
             this.workerUpgradeAddButton.TabIndex = 15;
-            this.workerUpgradeAddButton.Text = "Upgrade Worker +10 costs $1000";
+            this.workerUpgradeAddButton.Text = "Upgrade Worker +10 costs $1.0e+003";
             this.workerUpgradeAddButton.UseVisualStyleBackColor = true;
             this.workerUpgradeAddButton.Click += new System.EventHandler(this.workerUpgradeAddButton_Click);
             // 
@@ -458,7 +462,7 @@
             // 
             this.UpgradeWorkerLabel.AutoSize = true;
             this.UpgradeWorkerLabel.BackColor = System.Drawing.SystemColors.Window;
-            this.UpgradeWorkerLabel.Location = new System.Drawing.Point(12, 143);
+            this.UpgradeWorkerLabel.Location = new System.Drawing.Point(12, 67);
             this.UpgradeWorkerLabel.Name = "UpgradeWorkerLabel";
             this.UpgradeWorkerLabel.Size = new System.Drawing.Size(109, 13);
             this.UpgradeWorkerLabel.TabIndex = 14;
@@ -466,7 +470,7 @@
             // 
             // workerUpgradeExpButton
             // 
-            this.workerUpgradeExpButton.Location = new System.Drawing.Point(12, 91);
+            this.workerUpgradeExpButton.Location = new System.Drawing.Point(12, 15);
             this.workerUpgradeExpButton.Name = "workerUpgradeExpButton";
             this.workerUpgradeExpButton.Size = new System.Drawing.Size(205, 49);
             this.workerUpgradeExpButton.TabIndex = 13;
@@ -478,7 +482,7 @@
             // 
             this.sellAllLabel.AutoSize = true;
             this.sellAllLabel.BackColor = System.Drawing.SystemColors.Window;
-            this.sellAllLabel.Location = new System.Drawing.Point(12, 72);
+            this.sellAllLabel.Location = new System.Drawing.Point(11, 150);
             this.sellAllLabel.Name = "sellAllLabel";
             this.sellAllLabel.Size = new System.Drawing.Size(81, 13);
             this.sellAllLabel.TabIndex = 12;
@@ -498,7 +502,7 @@
             // 
             this.mainUpgradePanel.Controls.Add(this.idleUpgradePanel);
             this.mainUpgradePanel.Controls.Add(this.panel1);
-            this.mainUpgradePanel.Location = new System.Drawing.Point(12, 269);
+            this.mainUpgradePanel.Location = new System.Drawing.Point(12, 272);
             this.mainUpgradePanel.Name = "mainUpgradePanel";
             this.mainUpgradePanel.Size = new System.Drawing.Size(608, 313);
             this.mainUpgradePanel.TabIndex = 14;
@@ -512,35 +516,6 @@
             this.testPanel.Size = new System.Drawing.Size(608, 313);
             this.testPanel.TabIndex = 15;
             this.testPanel.Visible = false;
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.SystemColors.Window;
-            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel3.Location = new System.Drawing.Point(286, 3);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(322, 305);
-            this.panel3.TabIndex = 15;
-            // 
-            // panelButton01
-            // 
-            this.panelButton01.Location = new System.Drawing.Point(12, 240);
-            this.panelButton01.Name = "panelButton01";
-            this.panelButton01.Size = new System.Drawing.Size(75, 23);
-            this.panelButton01.TabIndex = 16;
-            this.panelButton01.Text = "Main Upgrades";
-            this.panelButton01.UseVisualStyleBackColor = true;
-            this.panelButton01.Click += new System.EventHandler(this.panelButton01_Click);
-            // 
-            // panelButton02
-            // 
-            this.panelButton02.Location = new System.Drawing.Point(93, 240);
-            this.panelButton02.Name = "panelButton02";
-            this.panelButton02.Size = new System.Drawing.Size(75, 23);
-            this.panelButton02.TabIndex = 17;
-            this.panelButton02.Text = "Test Panel";
-            this.panelButton02.UseVisualStyleBackColor = true;
-            this.panelButton02.Click += new System.EventHandler(this.panelButton02_Click);
             // 
             // panel2
             // 
@@ -556,17 +531,90 @@
             this.panel2.Size = new System.Drawing.Size(264, 305);
             this.panel2.TabIndex = 14;
             // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.SystemColors.Window;
+            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel3.Location = new System.Drawing.Point(286, 3);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(322, 305);
+            this.panel3.TabIndex = 15;
+            // 
+            // rubberBandUpgradePanel
+            // 
+            this.rubberBandUpgradePanel.Controls.Add(this.panel5);
+            this.rubberBandUpgradePanel.Controls.Add(this.panel6);
+            this.rubberBandUpgradePanel.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.rubberBandUpgradePanel.Location = new System.Drawing.Point(797, 343);
+            this.rubberBandUpgradePanel.Name = "rubberBandUpgradePanel";
+            this.rubberBandUpgradePanel.Size = new System.Drawing.Size(608, 313);
+            this.rubberBandUpgradePanel.TabIndex = 16;
+            this.rubberBandUpgradePanel.Visible = false;
+            // 
+            // panel5
+            // 
+            this.panel5.AutoScroll = true;
+            this.panel5.BackColor = System.Drawing.SystemColors.Window;
+            this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel5.Controls.Add(this.rubberBandCostUpgrade);
+            this.panel5.Controls.Add(this.sellAllButton);
+            this.panel5.Controls.Add(this.sellAllLabel);
+            this.panel5.Location = new System.Drawing.Point(0, 3);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(264, 305);
+            this.panel5.TabIndex = 14;
+            // 
+            // panel6
+            // 
+            this.panel6.BackColor = System.Drawing.SystemColors.Window;
+            this.panel6.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel6.Location = new System.Drawing.Point(286, 3);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(322, 305);
+            this.panel6.TabIndex = 15;
+            // 
+            // panelButton00
+            // 
+            this.panelButton00.Location = new System.Drawing.Point(12, 227);
+            this.panelButton00.Name = "panelButton00";
+            this.panelButton00.Size = new System.Drawing.Size(83, 42);
+            this.panelButton00.TabIndex = 13;
+            this.panelButton00.Text = "Generator Upgrades";
+            this.panelButton00.UseVisualStyleBackColor = true;
+            this.panelButton00.Click += new System.EventHandler(this.panelButton00_Click);
+            // 
+            // panelButton01
+            // 
+            this.panelButton01.Location = new System.Drawing.Point(101, 227);
+            this.panelButton01.Name = "panelButton01";
+            this.panelButton01.Size = new System.Drawing.Size(83, 42);
+            this.panelButton01.TabIndex = 17;
+            this.panelButton01.Text = "Rubberband Upgrades";
+            this.panelButton01.UseVisualStyleBackColor = true;
+            this.panelButton01.Click += new System.EventHandler(this.panelButton01_Click);
+            // 
+            // panelButton02
+            // 
+            this.panelButton02.Location = new System.Drawing.Point(190, 227);
+            this.panelButton02.Name = "panelButton02";
+            this.panelButton02.Size = new System.Drawing.Size(83, 42);
+            this.panelButton02.TabIndex = 18;
+            this.panelButton02.Text = "testpanel";
+            this.panelButton02.UseVisualStyleBackColor = true;
+            this.panelButton02.Click += new System.EventHandler(this.panelButton02_Click);
+            // 
             // gameForm
             // 
             this.AccessibleRole = System.Windows.Forms.AccessibleRole.Grip;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1428, 609);
+            this.ClientSize = new System.Drawing.Size(1428, 780);
             this.Controls.Add(this.panelButton02);
             this.Controls.Add(this.panelButton01);
+            this.Controls.Add(this.panelButton00);
+            this.Controls.Add(this.rubberBandUpgradePanel);
             this.Controls.Add(this.testPanel);
             this.Controls.Add(this.mainUpgradePanel);
-            this.Controls.Add(this.rubberBandCostUpgrade);
             this.Controls.Add(this.newsPanel);
             this.Controls.Add(this.mainPanel);
             this.Name = "gameForm";
@@ -591,6 +639,9 @@
             this.testPanel.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.rubberBandUpgradePanel.ResumeLayout(false);
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -639,10 +690,14 @@
         private System.Windows.Forms.Button workerUpgradeAddButton;
         private System.Windows.Forms.Panel mainUpgradePanel;
         private System.Windows.Forms.Panel testPanel;
-        private System.Windows.Forms.Button panelButton01;
-        private System.Windows.Forms.Button panelButton02;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel rubberBandUpgradePanel;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Button panelButton00;
+        private System.Windows.Forms.Button panelButton01;
+        private System.Windows.Forms.Button panelButton02;
     }
 }
 
