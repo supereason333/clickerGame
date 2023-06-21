@@ -127,8 +127,8 @@ namespace clickerGame
 
         private void testButton_Click(object sender, EventArgs e)
         {
-            money += 100000;
-            rubberBand += 100000;
+            //money += 100000;
+            //rubberBand += 100000;
             updateDisplay("money");
             updateDisplay("rubberBand");
         }
