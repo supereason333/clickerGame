@@ -132,7 +132,7 @@ namespace clickerGame
             "You have produced more than one rubber band since the last second!",
             "Birthday party, cheesecake, jelly bean, boom! You symbiotic, patriotic, slam book neck, right? Right\nGuess what song this is from!",
             "do do dooooo dooo doooo it starts with one! ",
-            "Wll i know, time is a valuable thing",
+            "Well i know, time is a valuable thing",
             "Watch it fly by as the pendulm swings",
             "Don't you have a assignment due later?",
             "Microphone companies created microphones to crash the stock market! Search up \"fake news\" to find out more!",
