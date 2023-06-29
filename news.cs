@@ -143,7 +143,8 @@ namespace clickerGame
             "My spelling sucks!",
             "return;",
             "while(true)",
-            "Lua indexes start at 1 not 0. It is a sin!"
+            "Lua indexes start at 1 not 0. It is a sin!",
+            "If you have a dark past and a bright future, it means you're turning a light on."
 
         };
     }
