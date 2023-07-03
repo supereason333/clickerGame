@@ -9,3 +9,4 @@ C:\Users\super\source\repos\mainGame\clickerGame\obj\Debug\clickerGame.csproj.Co
 C:\Users\super\source\repos\mainGame\clickerGame\obj\Debug\clickerGame.exe
 C:\Users\super\source\repos\mainGame\clickerGame\obj\Debug\clickerGame.pdb
 C:\Users\super\source\repos\mainGame\clickerGame\obj\Debug\clickerGame.gameForm.resources
+C:\Users\super\source\repos\mainGame\clickerGame\obj\Debug\clickerGame.Form2.resources

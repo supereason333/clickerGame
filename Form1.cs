@@ -20,6 +20,7 @@ namespace clickerGame
         {
             InitializeComponent();
             idleGeneratorWorker.RunWorkerAsync();
+            casinoPanelChange(0);
         }
         private double money = 0;
         private double rubberBandPrice = 0.1;
@@ -330,22 +331,23 @@ namespace clickerGame
 
         private void switchPanel(int panelNumber)
         {
-            mainUpgradePanel.Visible = false;
-            nothingPanel.Visible = false;
-            rubberBandUpgradePanel.Visible = false;
+            mainUpgradePanel.Visible = false; mainUpgradePanel.Location = new Point(12, 272);
+            nothingPanel.Visible = false; rubberBandUpgradePanel.Location = new Point(12, 272);
+            rubberBandUpgradePanel.Visible = false; nothingPanel.Location = new Point(12, 272);
+            casinoPanel.Visible = false; casinoPanel.Location = new Point(12, 272);
             switch (panelNumber)
             {
                 case 0:
                     mainUpgradePanel.Visible = true;
-                    mainUpgradePanel.Location = new Point(12, 284);
                     break;
                 case 1:
                     rubberBandUpgradePanel.Visible = true;
-                    rubberBandUpgradePanel.Location = new Point(12, 284);
                     break;
                 case 2:
                     nothingPanel.Visible = true;
-                    nothingPanel.Location = new Point(12, 284);
+                    break;
+                case 3:
+                    casinoPanel.Visible = true;
                     break;
             }
         }
@@ -364,7 +366,10 @@ namespace clickerGame
         {
             switchPanel(2);
         }
-
+        private void panelButton03_Click(object sender, EventArgs e)
+        {
+            switchPanel(3);
+        }
         private int clickerUpgradedTimes = 0;
         private void clickerUpgradeButton_Click(object sender, EventArgs e)
         {
@@ -401,6 +406,30 @@ namespace clickerGame
                     nothingButton.Text = "Purchase nothing for $" + 2 * Math.Pow(2, nothingAmount);
                 }
             }
+        }
+        private void casinoPanelChange(int panelNumber)
+        {
+            casinoPlayPanel00.Hide(); casinoPlayPanel00.Location = new Point(166, 3);
+            casinoPlayPanel01.Hide(); casinoPlayPanel01.Location = new Point(166, 3);
+            switch (panelNumber)
+            {
+                case 0:
+                    casinoPlayPanel00.Show();
+                    break;
+                case 1:
+                    casinoPlayPanel01.Show();
+                    break;
+            }
+        }
+
+        private void gambleButton00_Click(object sender, EventArgs e)
+        {
+            casinoPanelChange(0);
+        }
+
+        private void gambleButton01_Click(object sender, EventArgs e)
+        {
+            casinoPanelChange(1);
         }
     }
     class idleGenerator
