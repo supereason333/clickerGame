@@ -62,6 +62,8 @@
             this.rubberBandCostUpgrade = new System.Windows.Forms.Button();
             this.sellAllButton = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.upgradeMachineLabel = new System.Windows.Forms.Label();
+            this.machineUpgradeExpButton = new System.Windows.Forms.Button();
             this.WorkerUpgradeAddLabel = new System.Windows.Forms.Label();
             this.workerUpgradeAddButton = new System.Windows.Forms.Button();
             this.UpgradeWorkerLabel = new System.Windows.Forms.Label();
@@ -82,13 +84,19 @@
             this.panelButton03 = new System.Windows.Forms.Button();
             this.casinoPanel = new System.Windows.Forms.Panel();
             this.casinoPlayPanel01 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
             this.casinoChoosePanel = new System.Windows.Forms.Panel();
             this.gambleButton01 = new System.Windows.Forms.Button();
             this.gambleButton00 = new System.Windows.Forms.Button();
             this.casinoPlayPanel00 = new System.Windows.Forms.Panel();
+            this.gambleAllMoneyButton = new System.Windows.Forms.Button();
+            this.casinoRandomNumberBox = new System.Windows.Forms.TextBox();
+            this.randomNumberGambleButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.catTextButton = new System.Windows.Forms.Button();
+            this.catPicture = new System.Windows.Forms.PictureBox();
+            this.testTextBox = new System.Windows.Forms.TextBox();
             this.mainPanel.SuspendLayout();
             this.newsPanel.SuspendLayout();
             this.idleUpgradePanel.SuspendLayout();
@@ -99,12 +107,15 @@
             this.mainUpgradePanel.SuspendLayout();
             this.nothingPanel.SuspendLayout();
             this.nothingPanel01.SuspendLayout();
+            this.nothingPanel02.SuspendLayout();
             this.rubberBandUpgradePanel.SuspendLayout();
             this.panel5.SuspendLayout();
             this.casinoPanel.SuspendLayout();
             this.casinoPlayPanel01.SuspendLayout();
             this.casinoChoosePanel.SuspendLayout();
             this.casinoPlayPanel00.SuspendLayout();
+            this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.catPicture)).BeginInit();
             this.SuspendLayout();
             // 
             // clickerButton
@@ -230,7 +241,7 @@
             this.newsPanel.Controls.Add(this.newsButton);
             this.newsPanel.Location = new System.Drawing.Point(12, 12);
             this.newsPanel.Name = "newsPanel";
-            this.newsPanel.Size = new System.Drawing.Size(765, 51);
+            this.newsPanel.Size = new System.Drawing.Size(915, 51);
             this.newsPanel.TabIndex = 4;
             // 
             // newsBox
@@ -247,7 +258,7 @@
             // errorLabel
             // 
             this.errorLabel.AutoSize = true;
-            this.errorLabel.Location = new System.Drawing.Point(666, 180);
+            this.errorLabel.Location = new System.Drawing.Point(21, 104);
             this.errorLabel.Name = "errorLabel";
             this.errorLabel.Size = new System.Drawing.Size(55, 13);
             this.errorLabel.TabIndex = 6;
@@ -255,7 +266,7 @@
             // 
             // testButton
             // 
-            this.testButton.Location = new System.Drawing.Point(669, 128);
+            this.testButton.Location = new System.Drawing.Point(24, 52);
             this.testButton.Name = "testButton";
             this.testButton.Size = new System.Drawing.Size(75, 23);
             this.testButton.TabIndex = 7;
@@ -268,7 +279,7 @@
             this.TESTLABEL.AutoSize = true;
             this.TESTLABEL.BackColor = System.Drawing.SystemColors.Window;
             this.TESTLABEL.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.TESTLABEL.Location = new System.Drawing.Point(669, 162);
+            this.TESTLABEL.Location = new System.Drawing.Point(24, 86);
             this.TESTLABEL.Name = "TESTLABEL";
             this.TESTLABEL.Size = new System.Drawing.Size(37, 15);
             this.TESTLABEL.TabIndex = 8;
@@ -444,6 +455,8 @@
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.Window;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.upgradeMachineLabel);
+            this.panel1.Controls.Add(this.machineUpgradeExpButton);
             this.panel1.Controls.Add(this.WorkerUpgradeAddLabel);
             this.panel1.Controls.Add(this.workerUpgradeAddButton);
             this.panel1.Controls.Add(this.UpgradeWorkerLabel);
@@ -452,6 +465,26 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(322, 305);
             this.panel1.TabIndex = 12;
+            // 
+            // upgradeMachineLabel
+            // 
+            this.upgradeMachineLabel.AutoSize = true;
+            this.upgradeMachineLabel.BackColor = System.Drawing.SystemColors.Window;
+            this.upgradeMachineLabel.Location = new System.Drawing.Point(12, 213);
+            this.upgradeMachineLabel.Name = "upgradeMachineLabel";
+            this.upgradeMachineLabel.Size = new System.Drawing.Size(109, 13);
+            this.upgradeMachineLabel.TabIndex = 18;
+            this.upgradeMachineLabel.Text = "Worker Efficiency ^ 1";
+            // 
+            // machineUpgradeExpButton
+            // 
+            this.machineUpgradeExpButton.Location = new System.Drawing.Point(12, 161);
+            this.machineUpgradeExpButton.Name = "machineUpgradeExpButton";
+            this.machineUpgradeExpButton.Size = new System.Drawing.Size(205, 49);
+            this.machineUpgradeExpButton.TabIndex = 17;
+            this.machineUpgradeExpButton.Text = "Upgrade Worker ^ 1.1 costs 10 workers";
+            this.machineUpgradeExpButton.UseVisualStyleBackColor = true;
+            this.machineUpgradeExpButton.Click += new System.EventHandler(this.machineUpgradeExpButton_Click);
             // 
             // WorkerUpgradeAddLabel
             // 
@@ -505,7 +538,7 @@
             // 
             // clrButton
             // 
-            this.clrButton.Location = new System.Drawing.Point(669, 99);
+            this.clrButton.Location = new System.Drawing.Point(24, 23);
             this.clrButton.Name = "clrButton";
             this.clrButton.Size = new System.Drawing.Size(75, 23);
             this.clrButton.TabIndex = 13;
@@ -526,7 +559,7 @@
             // 
             this.nothingPanel.Controls.Add(this.nothingPanel01);
             this.nothingPanel.Controls.Add(this.nothingPanel02);
-            this.nothingPanel.Location = new System.Drawing.Point(797, 24);
+            this.nothingPanel.Location = new System.Drawing.Point(996, 12);
             this.nothingPanel.Name = "nothingPanel";
             this.nothingPanel.Size = new System.Drawing.Size(608, 313);
             this.nothingPanel.TabIndex = 15;
@@ -557,6 +590,11 @@
             // 
             this.nothingPanel02.BackColor = System.Drawing.SystemColors.Window;
             this.nothingPanel02.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.nothingPanel02.Controls.Add(this.testTextBox);
+            this.nothingPanel02.Controls.Add(this.clrButton);
+            this.nothingPanel02.Controls.Add(this.errorLabel);
+            this.nothingPanel02.Controls.Add(this.testButton);
+            this.nothingPanel02.Controls.Add(this.TESTLABEL);
             this.nothingPanel02.Location = new System.Drawing.Point(286, 3);
             this.nothingPanel02.Name = "nothingPanel02";
             this.nothingPanel02.Size = new System.Drawing.Size(322, 305);
@@ -566,7 +604,7 @@
             // 
             this.rubberBandUpgradePanel.Controls.Add(this.panel5);
             this.rubberBandUpgradePanel.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.rubberBandUpgradePanel.Location = new System.Drawing.Point(797, 343);
+            this.rubberBandUpgradePanel.Location = new System.Drawing.Point(996, 331);
             this.rubberBandUpgradePanel.Name = "rubberBandUpgradePanel";
             this.rubberBandUpgradePanel.Size = new System.Drawing.Size(608, 313);
             this.rubberBandUpgradePanel.TabIndex = 16;
@@ -642,7 +680,7 @@
             this.casinoPanel.Controls.Add(this.casinoPlayPanel01);
             this.casinoPanel.Controls.Add(this.casinoChoosePanel);
             this.casinoPanel.Controls.Add(this.casinoPlayPanel00);
-            this.casinoPanel.Location = new System.Drawing.Point(1423, 27);
+            this.casinoPanel.Location = new System.Drawing.Point(1622, 15);
             this.casinoPanel.Name = "casinoPanel";
             this.casinoPanel.Size = new System.Drawing.Size(608, 632);
             this.casinoPanel.TabIndex = 16;
@@ -657,6 +695,15 @@
             this.casinoPlayPanel01.Name = "casinoPlayPanel01";
             this.casinoPlayPanel01.Size = new System.Drawing.Size(442, 305);
             this.casinoPlayPanel01.TabIndex = 16;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(3, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(28, 13);
+            this.label2.TabIndex = 13;
+            this.label2.Text = "Test";
             // 
             // casinoChoosePanel
             // 
@@ -694,12 +741,44 @@
             // 
             this.casinoPlayPanel00.BackColor = System.Drawing.SystemColors.Window;
             this.casinoPlayPanel00.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.casinoPlayPanel00.Controls.Add(this.button1);
+            this.casinoPlayPanel00.Controls.Add(this.gambleAllMoneyButton);
+            this.casinoPlayPanel00.Controls.Add(this.casinoRandomNumberBox);
+            this.casinoPlayPanel00.Controls.Add(this.randomNumberGambleButton);
             this.casinoPlayPanel00.Controls.Add(this.label1);
             this.casinoPlayPanel00.Location = new System.Drawing.Point(166, 3);
             this.casinoPlayPanel00.Name = "casinoPlayPanel00";
             this.casinoPlayPanel00.Size = new System.Drawing.Size(442, 305);
             this.casinoPlayPanel00.TabIndex = 15;
+            // 
+            // gambleAllMoneyButton
+            // 
+            this.gambleAllMoneyButton.Location = new System.Drawing.Point(140, 36);
+            this.gambleAllMoneyButton.Name = "gambleAllMoneyButton";
+            this.gambleAllMoneyButton.Size = new System.Drawing.Size(95, 23);
+            this.gambleAllMoneyButton.TabIndex = 15;
+            this.gambleAllMoneyButton.Text = "Add all money";
+            this.gambleAllMoneyButton.UseVisualStyleBackColor = true;
+            this.gambleAllMoneyButton.Click += new System.EventHandler(this.gambleAllMoneyButton_Click);
+            // 
+            // casinoRandomNumberBox
+            // 
+            this.casinoRandomNumberBox.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.casinoRandomNumberBox.Location = new System.Drawing.Point(6, 36);
+            this.casinoRandomNumberBox.Name = "casinoRandomNumberBox";
+            this.casinoRandomNumberBox.Size = new System.Drawing.Size(128, 20);
+            this.casinoRandomNumberBox.TabIndex = 14;
+            this.casinoRandomNumberBox.Text = "Amount:";
+            this.casinoRandomNumberBox.MouseClick += new System.Windows.Forms.MouseEventHandler(this.casinoRandomNumberBox_MouseClick);
+            // 
+            // randomNumberGambleButton
+            // 
+            this.randomNumberGambleButton.Location = new System.Drawing.Point(3, 62);
+            this.randomNumberGambleButton.Name = "randomNumberGambleButton";
+            this.randomNumberGambleButton.Size = new System.Drawing.Size(131, 23);
+            this.randomNumberGambleButton.TabIndex = 13;
+            this.randomNumberGambleButton.Text = "Gamble Money";
+            this.randomNumberGambleButton.UseVisualStyleBackColor = true;
+            this.randomNumberGambleButton.Click += new System.EventHandler(this.randomNumberGambleButton_Click);
             // 
             // label1
             // 
@@ -710,38 +789,56 @@
             this.label1.TabIndex = 12;
             this.label1.Text = "Random Number";
             // 
-            // label2
+            // panel2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(3, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(28, 13);
-            this.label2.TabIndex = 13;
-            this.label2.Text = "Test";
+            this.panel2.BackColor = System.Drawing.SystemColors.Window;
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel2.Controls.Add(this.catTextButton);
+            this.panel2.Controls.Add(this.catPicture);
+            this.panel2.Location = new System.Drawing.Point(648, 82);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(279, 220);
+            this.panel2.TabIndex = 12;
             // 
-            // button1
+            // catTextButton
             // 
-            this.button1.Location = new System.Drawing.Point(6, 17);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 13;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.catTextButton.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.catTextButton.Location = new System.Drawing.Point(3, 3);
+            this.catTextButton.Name = "catTextButton";
+            this.catTextButton.Size = new System.Drawing.Size(152, 49);
+            this.catTextButton.TabIndex = 12;
+            this.catTextButton.Text = "HI!!!!!";
+            this.catTextButton.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.catTextButton.UseVisualStyleBackColor = false;
+            this.catTextButton.Click += new System.EventHandler(this.catTextButton_Click);
+            // 
+            // catPicture
+            // 
+            this.catPicture.Image = global::clickerGame.Properties.Resources.ezgif_5_2ceb060ec8;
+            this.catPicture.Location = new System.Drawing.Point(108, 68);
+            this.catPicture.Name = "catPicture";
+            this.catPicture.Size = new System.Drawing.Size(164, 128);
+            this.catPicture.TabIndex = 1;
+            this.catPicture.TabStop = false;
+            // 
+            // testTextBox
+            // 
+            this.testTextBox.Location = new System.Drawing.Point(117, 23);
+            this.testTextBox.Name = "testTextBox";
+            this.testTextBox.Size = new System.Drawing.Size(100, 20);
+            this.testTextBox.TabIndex = 21;
             // 
             // gameForm
             // 
             this.AccessibleRole = System.Windows.Forms.AccessibleRole.Grip;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(2644, 982);
+            this.ClientSize = new System.Drawing.Size(2498, 982);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.casinoPanel);
             this.Controls.Add(this.panelButton03);
-            this.Controls.Add(this.clrButton);
-            this.Controls.Add(this.errorLabel);
             this.Controls.Add(this.panelButton02);
-            this.Controls.Add(this.testButton);
             this.Controls.Add(this.panelButton01);
-            this.Controls.Add(this.TESTLABEL);
             this.Controls.Add(this.panelButton00);
             this.Controls.Add(this.rubberBandUpgradePanel);
             this.Controls.Add(this.nothingPanel);
@@ -769,6 +866,8 @@
             this.mainUpgradePanel.ResumeLayout(false);
             this.nothingPanel.ResumeLayout(false);
             this.nothingPanel01.ResumeLayout(false);
+            this.nothingPanel02.ResumeLayout(false);
+            this.nothingPanel02.PerformLayout();
             this.rubberBandUpgradePanel.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
@@ -778,8 +877,9 @@
             this.casinoChoosePanel.ResumeLayout(false);
             this.casinoPlayPanel00.ResumeLayout(false);
             this.casinoPlayPanel00.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.catPicture)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -845,7 +945,15 @@
         private System.Windows.Forms.Button gambleButton01;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button randomNumberGambleButton;
+        private System.Windows.Forms.TextBox casinoRandomNumberBox;
+        private System.Windows.Forms.Button gambleAllMoneyButton;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.PictureBox catPicture;
+        private System.Windows.Forms.Button catTextButton;
+        private System.Windows.Forms.Label upgradeMachineLabel;
+        private System.Windows.Forms.Button machineUpgradeExpButton;
+        private System.Windows.Forms.TextBox testTextBox;
     }
 }
 

@@ -148,6 +148,47 @@ namespace clickerGame
 
         };
     }
+    public class catAction
+    {
+        Random rnd = new Random();
+        string[] _normalSpeech =
+        {
+            "BRO CLICK FASTER",
+            "ur bad at clicking",
+            "honestly just get good",
+            "did you know clicking gives you stuff WOWOW",
+            "upgrade stuff lmao, it helps",
+            "ready to gamble your life saving away?",
+            "clicking this button does not make you any better at the game",
+            "having a better mouse does not make you better",
+            "autoclicking is cheating !!111!1!1!",
+            "you should consider that the game does not save",
+            "im really adding features that wil never be used",
+            "people really play this game",
+            "nothing.",
+            "click the \"x\" button at the top right",
+            "stop clickn me"
+        };
+        string[] _upgradeSpeec =
+        {
+            "not enough money hahaha",
+            "lmao u brought the useless",
+            "thats rlly gonna help"
+        };
+        int clickAmount = 0;
+        public string normalSpeech()
+        {
+            clickAmount++;
+            if (clickAmount >= 1000)
+            {
+                return "STOP CLICKING";
+            }
+            else
+            {
+                return _normalSpeech[rnd.Next(0, _normalSpeech.Length)];
+            }
+        }
+    }
     public class codes
     {
         public string[,] secretCodes = new string[,]

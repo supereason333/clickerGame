@@ -21,17 +21,20 @@ namespace clickerGame
             InitializeComponent();
             idleGeneratorWorker.RunWorkerAsync();
             casinoPanelChange(0);
+            updateDisplay("rubberBand");
+            updateDisplay("money");
+            updateDisplay("idleGenerator");
         }
         private double money = 0;
-        private double rubberBandPrice = 0.1;
         private double rubberBand = 0;
         bool broughtNews = false;
         int newsClicked = 0;
         Random rnd = new Random();
         private void gameForm_Load(object sender, EventArgs e)
         {
-            this.Size = new Size(800, 650);
+            this.Size = new Size(957, 650);
             this.CenterToScreen();
+            rubberBandCostUpgrade.Text = "$" + Math.Round(0.1 * Math.Pow(1.5, rubberBand01.upgradeAmount), 2) + " Per band, $" + rubberBand01.nextUpgradeCost + " to buy";
         }
 
         private void newsButton_Click(object sender, EventArgs e)
@@ -93,17 +96,17 @@ namespace clickerGame
             }
             else if (type == "idleGenerator")
             {
-                workerAmountLabel.Text = Convert.ToString(worker01.amount) + " Workers";
-                workerRubberBandLabel.Text = Convert.ToString(worker01.rubberBandPerSecond * worker01.amount) + " Rubber Bands Per Second";
-                workerButtom.Text = "Factory Worker: $" + worker01.totalCost.ToString("N") + " To hire";
+                workerAmountLabel.Text = Convert.ToString(worker01.broughtAmount) + " Workers";
+                workerRubberBandLabel.Text = Convert.ToString(Math.Round(worker01.totalRubberBandPerSecond, 2)) + " Rubber Bands Per Second";
+                workerButtom.Text = "Factory Worker: $" + worker01.nextBuyCost.ToString("N") + " To hire";
 
-                machineAmountLabel.Text = Convert.ToString(machine01.amount) + " Machines";
-                machineRubberBandLabel.Text = Convert.ToString(machine01.rubberBandPerSecond * machine01.amount) + " Rubber Bands Per Second";
-                machineButton.Text = "Machine: $" + machine01.totalCost.ToString("N");
+                machineAmountLabel.Text = Convert.ToString(machine01.broughtAmount) + " Machines";
+                machineRubberBandLabel.Text = Convert.ToString(machine01.totalRubberBandPerSecond) + " Rubber Bands Per Second";
+                machineButton.Text = "Machine: $" + machine01.nextBuyCost.ToString("N");
 
-                productionLineAmountLabel.Text = Convert.ToString(productionLine01.amount) + " Production Lines";
-                ProductionLineRubberBandLabel.Text = Convert.ToString(productionLine01.rubberBandPerSecond * productionLine01.amount) + " Rubber Bands Per Second";
-                productionLineButton.Text = "Production Line: $" + productionLine01.totalCost.ToString("N");
+                productionLineAmountLabel.Text = Convert.ToString(productionLine01.broughtAmount) + " Production Lines";
+                ProductionLineRubberBandLabel.Text = Convert.ToString(productionLine01.totalRubberBandPerSecond) + " Rubber Bands Per Second";
+                productionLineButton.Text = "Production Line: $" + productionLine01.nextBuyCost.ToString("N");
             }
             else
             {
@@ -120,7 +123,7 @@ namespace clickerGame
 
         private void moneyButton_Click(object sender, EventArgs e)
         {
-            money += rubberBand * rubberBandPrice;
+            money += rubberBand * rubberBand01.price;
             rubberBand = 0;
             updateDisplay("money");
             updateDisplay("rubberBand");
@@ -128,8 +131,8 @@ namespace clickerGame
 
         private void testButton_Click(object sender, EventArgs e)
         {
-            //money += 100000;
-            //rubberBand += 100000;
+            money += Convert.ToInt32(testTextBox.Text);
+            rubberBand += Convert.ToInt32(testTextBox.Text);
             updateDisplay("money");
             updateDisplay("rubberBand");
         }
@@ -148,9 +151,10 @@ namespace clickerGame
         private int anticheatTime = 0;
         private void idleGeneratorWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
-            totalPerSecond = idleMultiplier * (worker01.totalPerSecond + machine01.totalPerSecond + productionLine01.totalPerSecond) * Math.Pow(1.01, nothingAmount);
+            totalPerSecond = idleMultiplier * (worker01.totalRubberBandPerSecond + machine01.totalRubberBandPerSecond + productionLine01.totalRubberBandPerSecond) * Math.Pow(1.01, nothingAmount);
             rubberBand += totalPerSecond / 10;
             updateDisplay("rubberBand");
+
             if (clickPerSecond >= 25)
             {
                 this.Size = new Size(136, 39);
@@ -168,88 +172,22 @@ namespace clickerGame
                 anticheatTime++;
             }
         }
-
-        private double rubberBandUpgradeCost = 2600;
-        private int rubberBandUpgradeAmount = 0;
+        rubberBand rubberBand01 = new rubberBand();
         private void rubberBandUpgradeButton_Click(object sender, EventArgs e)
         {
-            if (money >= rubberBandUpgradeCost)
+            if (money >= rubberBand01.nextUpgradeCost)
             {
-                rubberBandUpgradeAmount++;
-                money -= rubberBandUpgradeCost;
+                money -= rubberBand01.upgradeAdd();
+                moneyButtonLabel.Text = "1 Rubber Band = $" + rubberBand01.price;
+                rubberBandCostUpgrade.Text = "$" + Math.Round(0.1 * Math.Pow(1.5, rubberBand01.upgradeAmount), 2) + " Per band, $" + rubberBand01.nextUpgradeCost + " to buy";
                 updateDisplay("money");
-                switch (rubberBandUpgradeAmount)
-                {
-                    case 1:
-                        rubberBandPrice = 0.20;
-                        rubberBandUpgradeCost = 5600;
-                        rubberBandCostUpgrade.Text = "orange rubber band production $0.30 per band $5,600 to buy";
-                        break;
-                    case 2:
-                        rubberBandPrice = 0.30;
-                        rubberBandUpgradeCost = 10000;
-                        rubberBandCostUpgrade.Text = "extra strong rubber bands $0.35 per band $10,000 to buy";
-                        break;
-                    case 3:
-                        rubberBandPrice = 0.35;
-                        rubberBandUpgradeCost = 97000;
-                        rubberBandCostUpgrade.Text = "marketing tricks $0.50 per band $97,000 to buy";
-                        break;
-                    case 4:
-                        rubberBandPrice = 0.50;
-                        rubberBandUpgradeCost = 320000;
-                        rubberBandCostUpgrade.Text = "thicker materials $0.65 per band $320,000 to buy";
-                        break;
-                    case 5:
-                        rubberBandPrice = 0.65;
-                        rubberBandUpgradeCost = 500000;
-                        rubberBandCostUpgrade.Text = "iBands $0.75 per band $500,000 to buy";
-                        break;
-                    case 6:
-                        rubberBandPrice = 0.75;
-                        rubberBandUpgradeCost = 700000;
-                        rubberBandCostUpgrade.Text = "Nividia collab special edition rubber bands $1.00 per band $700,000 to buy";
-                        break;
-                    case 7:
-                        rubberBandPrice = 1;
-                        rubberBandUpgradeCost = 1300000;
-                        rubberBandCostUpgrade.Text = "Pride month rubber bands $1.10 per band $,1300,000 to buy";
-                        break;
-                    case 8:
-                        rubberBandPrice = 1.1;
-                        rubberBandUpgradeCost = 2500000;
-                        rubberBandCostUpgrade.Text = "Child proof rubber bands $1.25 per band $2,500,000 to buy";
-                        break;
-                    case 9:
-                        rubberBandPrice = 1.25;
-                        rubberBandUpgradeCost = 5200000;
-                        rubberBandCostUpgrade.Text = "God tier? Rubber bands $1.40 per band $5,200,000 to buy";
-                        break;
-                    case 10:
-                        rubberBandPrice = 1.25;
-                        rubberBandUpgradeCost = 99999999.99;
-                        rubberBandCostUpgrade.Text = "Elastic bands? $1.60? per band $99,999,999.99 to buy?";
-                        break;
-                    case 11:
-                        rubberBandPrice = 1.60;
-                        rubberBandUpgradeCost = 0;
-                        rubberBandCostUpgrade.Text = string.Empty;
-                        rubberBandCostUpgrade.BackColor = Color.Cyan;
-                        break;
-                    case 126:
-                        rubberBandCostUpgrade.Text = "COMING SOON!";
-                        rubberBandCostUpgrade.BackColor = Color.Green;
-                        break;
-
-                }
-                moneyButtonLabel.Text = "1 Rubber Band = $" + rubberBandPrice;
             }
         }
         
-        idleGenerator worker01 = new idleGenerator(10, 1.1, 4);
+        idleGenerator worker01 = new idleGenerator(10, 10);
         private void workerButtom_Click(object sender, EventArgs e)
         {
-            if (money >= worker01.totalCost)
+            if (money >= worker01.nextBuyCost)
             {
                 money -= worker01.buy();
                 updateDisplay("money");
@@ -258,32 +196,30 @@ namespace clickerGame
         }
         private void workerUpgradeButton_Click(object sender, EventArgs e)
         {
-            if (worker01.amount >= worker01.upgradeExpCost)
+            if (worker01.broughtAmount >= worker01.nextUpgradeExpCost)
             {
-                worker01.amount -= worker01.upgradeExpCost;
-                worker01.upgrade(1.1, "exp");
-                workerUpgradeExpButton.Text = "Upgrade Worker ^ 1.1 costs " + worker01.upgradeExpCost + " workers";
+                worker01.broughtAmount -= worker01.upgradeExp();
+                workerUpgradeExpButton.Text = "Upgrade Worker ^ 1.1 costs " + worker01.nextUpgradeExpCost + " workers";
                 updateDisplay("idleGenerator");
-                UpgradeWorkerLabel.Text = ("Worker Efficiency ^ " + Math.Pow(1.1, worker01.expUpgradeTimes));
+                UpgradeWorkerLabel.Text = "Worker Efficiency ^ " + Math.Pow(1.1, worker01.upgradeExpAmount);
             }
         }
         
         private void workerUpgradeAddButton_Click(object sender, EventArgs e)
         {
-            if (money >= worker01.upgradeAddCost)
+            if (money >= worker01.nextUpgradeAddCost)
             {
-                money -= worker01.upgradeAddCost;
-                worker01.upgrade(10, "add");
+                money -= worker01.upgradeAdd();
                 updateDisplay("money");
                 updateDisplay("idleGenerator");
-                workerUpgradeAddButton.Text = "Upgrade Worker +10 costs $" + worker01.upgradeAddCost.ToString("e1");
-                WorkerUpgradeAddLabel.Text = "Worker + " + worker01.totalUpgradeAddAmount + " / sec";
+                workerUpgradeAddButton.Text = "Upgrade Worker +10 costs $" + worker01.nextUpgradeAddCost.ToString("e2");
+                WorkerUpgradeAddLabel.Text = "Worker + " + worker01.upgradeAddAmount * 10 + " / sec";
             }
         }
-        idleGenerator machine01 = new idleGenerator(270, 1.1, 70);
+        idleGenerator machine01 = new idleGenerator(10, 270);
         private void machineButton_Click(object sender, EventArgs e)
         {
-            if (money >= machine01.totalCost)
+            if (money >= machine01.nextBuyCost)
             {
                 money -= machine01.buy();
                 updateDisplay("money");
@@ -291,10 +227,10 @@ namespace clickerGame
             }
         }
 
-        idleGenerator productionLine01 = new idleGenerator(700, 1.1, 200);
+        idleGenerator productionLine01 = new idleGenerator(10, 700);
         private void productionLineButton_Click(object sender, EventArgs e)
         {
-            if (money >= productionLine01.totalCost)
+            if (money >= productionLine01.nextBuyCost)
             {
                 money -= productionLine01.buy();
                 updateDisplay("money");
@@ -425,80 +361,71 @@ namespace clickerGame
         private void gambleButton00_Click(object sender, EventArgs e)
         {
             casinoPanelChange(0);
+            casinoRandomNumberBox.Text = "Amount:";
         }
 
         private void gambleButton01_Click(object sender, EventArgs e)
         {
             casinoPanelChange(1);
         }
-    }
-    class idleGenerator
-    {
-        public int amount;
-        public double rubberBandPerSecond;
-        public double cost;
-        public double totalCost;
-        public double costMultiplier;
-        public double totalPerSecond;
-        public int upgradeExpCost;
-        public double upgradeAddCost;
-        public int expUpgradeTimes;
-        public double totalUpgradeAddAmount;
-        public idleGenerator(int _cost, double _costMultiplier, double _rubberBandPerSecond)
-        {
-            cost = _cost;
-            totalCost = _cost;
-            costMultiplier = _costMultiplier;
-            rubberBandPerSecond = _rubberBandPerSecond;
-            expUpgradeTimes = 0;
-            upgradeAddCost = 1000;
-            upgradeExpCost = 10;
-            amount = 0;
-        }
 
-        public double buy()
+        double bettingAmount;
+        double wonMoney;
+        int minAmount = 8;
+        private void randomNumberGambleButton_Click(object sender, EventArgs e)
         {
-            amount++;
-            totalPerSecond = rubberBandPerSecond * amount;
-            recalculateAmount();
-            return cost * Math.Pow(costMultiplier, amount - 1);
-        }
-        public bool upgrade(double _rubberBandPerSecondAdd, string _addType)
-        {
-            if (_addType == "mult")
+            if (!casinoRandomNumberBox.Text.IsNumeric())
             {
-                rubberBandPerSecond = rubberBandPerSecond * _rubberBandPerSecondAdd;
+                casinoRandomNumberBox.Text = "Enter a number";
+                return;
             }
-            else if (_addType == "add")
+            bettingAmount = Convert.ToDouble(casinoRandomNumberBox.Text);
+            if (bettingAmount <= money)
             {
-                rubberBandPerSecond += _rubberBandPerSecondAdd;
-                totalUpgradeAddAmount += _rubberBandPerSecondAdd;
-                upgradeAddCost *= 4;
-
-            }
-            else if (_addType == "exp")
-            {
-                rubberBandPerSecond = Math.Pow(rubberBandPerSecond, _rubberBandPerSecondAdd);
-                rubberBandPerSecond = Math.Round(rubberBandPerSecond, 2);
-                upgradeExpCost = upgradeExpCost * 2 + 20;
-                expUpgradeTimes++;
+                money -= bettingAmount;
+                wonMoney = rnd.Next(minAmount, 19) * bettingAmount / 10;
+                minAmount = 0;
+                money += wonMoney;
             }
             else
             {
-                return false;
-            }                
-            recalculateAmount();
-            return true;
+                casinoRandomNumberBox.Text = "Not enough Money";
+                return;
+            }
+            if (wonMoney > bettingAmount)
+            {
+                casinoRandomNumberBox.Text = "You won $" + (wonMoney - bettingAmount).ToString("N2");
+            }
+            else if (wonMoney < bettingAmount)
+            {
+                casinoRandomNumberBox.Text = "You lost $" + (bettingAmount - wonMoney).ToString("N2");
+            }
+            else
+            {
+                casinoRandomNumberBox.Text = "You didn't loose nor gain";
+            }
+            updateDisplay("money");
         }
-        public void clear()
-        {   
-            amount = 0;
-            recalculateAmount();
-        }
-        public void recalculateAmount()
+        Random Random01 = new Random();
+
+        private void gambleAllMoneyButton_Click(object sender, EventArgs e)
         {
-            totalCost = Math.Round(cost * Math.Pow(costMultiplier, amount), 2);
-            totalPerSecond = rubberBandPerSecond * amount;
+            casinoRandomNumberBox.Text = "" + money;
+        }
+
+        private void casinoRandomNumberBox_MouseClick(object sender, MouseEventArgs e)
+        {
+            casinoRandomNumberBox.Text = string.Empty;
+        }
+        clickerGame.catAction catAction01 = new catAction();
+        private void catTextButton_Click(object sender, EventArgs e)
+        {
+            catTextButton.Text = catAction01.normalSpeech();
+        }
+
+        private void machineUpgradeExpButton_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }
