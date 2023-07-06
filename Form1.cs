@@ -131,8 +131,8 @@ namespace clickerGame
 
         private void testButton_Click(object sender, EventArgs e)
         {
-            money += Convert.ToInt32(testTextBox.Text);
-            rubberBand += Convert.ToInt32(testTextBox.Text);
+            //money += Convert.ToInt32(testTextBox.Text);
+            //rubberBand += Convert.ToInt32(testTextBox.Text);
             updateDisplay("money");
             updateDisplay("rubberBand");
         }
