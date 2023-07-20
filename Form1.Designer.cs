@@ -75,6 +75,7 @@
             this.nothingPanel01 = new System.Windows.Forms.Panel();
             this.nothingButton = new System.Windows.Forms.Button();
             this.nothingPanel02 = new System.Windows.Forms.Panel();
+            this.testTextBox = new System.Windows.Forms.TextBox();
             this.rubberBandUpgradePanel = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.clickerUpgradeButton = new System.Windows.Forms.Button();
@@ -96,7 +97,9 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.catTextButton = new System.Windows.Forms.Button();
             this.catPicture = new System.Windows.Forms.PictureBox();
-            this.testTextBox = new System.Windows.Forms.TextBox();
+            this.machineUpgradeAddLabel = new System.Windows.Forms.Label();
+            this.machineUpgradeAddButton = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.mainPanel.SuspendLayout();
             this.newsPanel.SuspendLayout();
             this.idleUpgradePanel.SuspendLayout();
@@ -453,8 +456,12 @@
             // 
             // panel1
             // 
+            this.panel1.AutoScroll = true;
             this.panel1.BackColor = System.Drawing.SystemColors.Window;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.machineUpgradeAddLabel);
+            this.panel1.Controls.Add(this.machineUpgradeAddButton);
             this.panel1.Controls.Add(this.upgradeMachineLabel);
             this.panel1.Controls.Add(this.machineUpgradeExpButton);
             this.panel1.Controls.Add(this.WorkerUpgradeAddLabel);
@@ -470,19 +477,19 @@
             // 
             this.upgradeMachineLabel.AutoSize = true;
             this.upgradeMachineLabel.BackColor = System.Drawing.SystemColors.Window;
-            this.upgradeMachineLabel.Location = new System.Drawing.Point(12, 213);
+            this.upgradeMachineLabel.Location = new System.Drawing.Point(12, 211);
             this.upgradeMachineLabel.Name = "upgradeMachineLabel";
-            this.upgradeMachineLabel.Size = new System.Drawing.Size(109, 13);
+            this.upgradeMachineLabel.Size = new System.Drawing.Size(115, 13);
             this.upgradeMachineLabel.TabIndex = 18;
-            this.upgradeMachineLabel.Text = "Worker Efficiency ^ 1";
+            this.upgradeMachineLabel.Text = "Machine Efficiency ^ 1";
             // 
             // machineUpgradeExpButton
             // 
-            this.machineUpgradeExpButton.Location = new System.Drawing.Point(12, 161);
+            this.machineUpgradeExpButton.Location = new System.Drawing.Point(12, 159);
             this.machineUpgradeExpButton.Name = "machineUpgradeExpButton";
             this.machineUpgradeExpButton.Size = new System.Drawing.Size(205, 49);
             this.machineUpgradeExpButton.TabIndex = 17;
-            this.machineUpgradeExpButton.Text = "Upgrade Worker ^ 1.1 costs 10 workers";
+            this.machineUpgradeExpButton.Text = "Upgrade Machine ^ 1.1 costs 10 machines";
             this.machineUpgradeExpButton.UseVisualStyleBackColor = true;
             this.machineUpgradeExpButton.Click += new System.EventHandler(this.machineUpgradeExpButton_Click);
             // 
@@ -599,6 +606,13 @@
             this.nothingPanel02.Name = "nothingPanel02";
             this.nothingPanel02.Size = new System.Drawing.Size(322, 305);
             this.nothingPanel02.TabIndex = 15;
+            // 
+            // testTextBox
+            // 
+            this.testTextBox.Location = new System.Drawing.Point(117, 23);
+            this.testTextBox.Name = "testTextBox";
+            this.testTextBox.Size = new System.Drawing.Size(100, 20);
+            this.testTextBox.TabIndex = 21;
             // 
             // rubberBandUpgradePanel
             // 
@@ -821,12 +835,34 @@
             this.catPicture.TabIndex = 1;
             this.catPicture.TabStop = false;
             // 
-            // testTextBox
+            // machineUpgradeAddLabel
             // 
-            this.testTextBox.Location = new System.Drawing.Point(117, 23);
-            this.testTextBox.Name = "testTextBox";
-            this.testTextBox.Size = new System.Drawing.Size(100, 20);
-            this.testTextBox.TabIndex = 21;
+            this.machineUpgradeAddLabel.AutoSize = true;
+            this.machineUpgradeAddLabel.BackColor = System.Drawing.SystemColors.Window;
+            this.machineUpgradeAddLabel.Location = new System.Drawing.Point(12, 282);
+            this.machineUpgradeAddLabel.Name = "machineUpgradeAddLabel";
+            this.machineUpgradeAddLabel.Size = new System.Drawing.Size(95, 13);
+            this.machineUpgradeAddLabel.TabIndex = 20;
+            this.machineUpgradeAddLabel.Text = "machine + 0 / Sec";
+            // 
+            // machineUpgradeAddButton
+            // 
+            this.machineUpgradeAddButton.Location = new System.Drawing.Point(12, 230);
+            this.machineUpgradeAddButton.Name = "machineUpgradeAddButton";
+            this.machineUpgradeAddButton.Size = new System.Drawing.Size(205, 49);
+            this.machineUpgradeAddButton.TabIndex = 19;
+            this.machineUpgradeAddButton.Text = "Upgrade machine +15 costs $1.0e+004";
+            this.machineUpgradeAddButton.UseVisualStyleBackColor = true;
+            this.machineUpgradeAddButton.Click += new System.EventHandler(this.machineUpgradeAddButton_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(23, 391);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(104, 23);
+            this.button1.TabIndex = 21;
+            this.button1.Text = "hehe funni button";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // gameForm
             // 
@@ -954,6 +990,9 @@
         private System.Windows.Forms.Label upgradeMachineLabel;
         private System.Windows.Forms.Button machineUpgradeExpButton;
         private System.Windows.Forms.TextBox testTextBox;
+        private System.Windows.Forms.Label machineUpgradeAddLabel;
+        private System.Windows.Forms.Button machineUpgradeAddButton;
+        private System.Windows.Forms.Button button1;
     }
 }
 

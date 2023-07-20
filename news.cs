@@ -144,7 +144,13 @@ namespace clickerGame
             "return;",
             "while(true)",
             "Lua indexes start at 1 not 0. It is a sin!",
-            "If you have a dark past and a bright future, it means you're turning a light on."
+            "If you have a dark past and a bright future, it means you're turning a light on.",
+            "wtf is a System.Security.Cryptography.X509Certificates",
+            "pwaggers (i didnt type this)",
+            "the news is kinda bad now idk why",
+            "Nikelodien? charged with copyright as original creators of Spongebob got angry!",
+            "interstellar, The Matrix, and Inception are peak films",
+            "nothing."
 
         };
     }

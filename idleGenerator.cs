@@ -12,6 +12,7 @@ namespace clickerGame
         double rubberBandPerSecond;
 
         double startCost;
+        double startUpgradeAddCost;
         public double broughtAmount = 0;
         public double nextBuyCost;              // next buy cost = start cost * 1.1^amount
         public double upgradeExpAmount = 0;
@@ -19,10 +20,11 @@ namespace clickerGame
         public double upgradeAddAmount = 0;
         public double nextUpgradeAddCost = 100; // next add cost = 100*10^amount = (100*Math.Pow(10, upgradeAddAmount))
 
-        public idleGenerator(double _rubberBandPerSecond, int _startCost)
+        public idleGenerator(double _rubberBandPerSecond, int _startCost, double _startUpgradeAddCost)
         {
             rubberBandPerSecond = _rubberBandPerSecond;
             startCost = _startCost;
+            startUpgradeAddCost = _startUpgradeAddCost;
             recalculateAmount();
         }
         public double buy()
@@ -31,17 +33,17 @@ namespace clickerGame
             recalculateAmount();
             return startCost * Math.Pow(1.1, broughtAmount - 1);
         }
-        public double upgradeExp()
+        public void upgradeExp()
         {
             upgradeExpAmount++;
+            broughtAmount -= nextUpgradeExpCost;
             recalculateAmount();
-            return 10 * Math.Pow(2, upgradeExpAmount - 1) + 20 * (upgradeExpAmount - 1);
         }
         public double upgradeAdd()
         {
             upgradeAddAmount++;
             recalculateAmount();
-            return 1000 * Math.Pow(10, upgradeAddAmount - 1);
+            return startUpgradeAddCost * Math.Pow(10, upgradeAddAmount - 1);
         }
         public void clear()
         {
@@ -52,7 +54,7 @@ namespace clickerGame
         {
             totalRubberBandPerSecond = Math.Pow(rubberBandPerSecond + upgradeAddAmount * 10, Math.Pow(1.1, upgradeExpAmount)) * broughtAmount;
             nextUpgradeExpCost = 10 * Math.Pow(2, upgradeExpAmount) + 20 * upgradeExpAmount;
-            nextUpgradeAddCost = 1000 * Math.Pow(10, upgradeAddAmount);
+            nextUpgradeAddCost = startUpgradeAddCost * Math.Pow(10, upgradeAddAmount);
             nextBuyCost = startCost * Math.Pow(1.1, broughtAmount);
         }
     }

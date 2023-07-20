@@ -70,6 +70,7 @@ namespace clickerGame
         }
         public void updateDisplay(string type)
         {
+            string toStringType = "";
             if (type == "money")
             {
                 money = Math.Round(money, 2);
@@ -98,15 +99,39 @@ namespace clickerGame
             {
                 workerAmountLabel.Text = Convert.ToString(worker01.broughtAmount) + " Workers";
                 workerRubberBandLabel.Text = Convert.ToString(Math.Round(worker01.totalRubberBandPerSecond, 2)) + " Rubber Bands Per Second";
-                workerButtom.Text = "Factory Worker: $" + worker01.nextBuyCost.ToString("N") + " To hire";
+                if (worker01.nextBuyCost >= 10000)
+                {
+                    toStringType = "e4";
+                }
+                else
+                {
+                    toStringType = "N";
+                }
+                workerButtom.Text = "Factory Worker: $" + worker01.nextBuyCost.ToString(toStringType) + " To hire";
 
                 machineAmountLabel.Text = Convert.ToString(machine01.broughtAmount) + " Machines";
-                machineRubberBandLabel.Text = Convert.ToString(machine01.totalRubberBandPerSecond) + " Rubber Bands Per Second";
-                machineButton.Text = "Machine: $" + machine01.nextBuyCost.ToString("N");
+                machineRubberBandLabel.Text = Convert.ToString(Math.Round(machine01.totalRubberBandPerSecond, 2)) + " Rubber Bands Per Second";
+                if (machine01.nextBuyCost >= 10000)
+                {
+                    toStringType = "e4";
+                }
+                else
+                {
+                    toStringType = "N";
+                }
+                machineButton.Text = "Machine: $" + machine01.nextBuyCost.ToString(toStringType);
 
                 productionLineAmountLabel.Text = Convert.ToString(productionLine01.broughtAmount) + " Production Lines";
-                ProductionLineRubberBandLabel.Text = Convert.ToString(productionLine01.totalRubberBandPerSecond) + " Rubber Bands Per Second";
-                productionLineButton.Text = "Production Line: $" + productionLine01.nextBuyCost.ToString("N");
+                ProductionLineRubberBandLabel.Text = Convert.ToString(Math.Round(productionLine01.totalRubberBandPerSecond, 2)) + " Rubber Bands Per Second";
+                if (productionLine01.nextBuyCost >= 10000)
+                {
+                    toStringType = "e4";
+                }
+                else
+                {
+                    toStringType = "N";
+                }
+                productionLineButton.Text = "Production Line: $" + productionLine01.nextBuyCost.ToString(toStringType);
             }
             else
             {
@@ -131,8 +156,8 @@ namespace clickerGame
 
         private void testButton_Click(object sender, EventArgs e)
         {
-            //money += Convert.ToInt32(testTextBox.Text);
-            //rubberBand += Convert.ToInt32(testTextBox.Text);
+            money += Convert.ToInt32(testTextBox.Text);
+            rubberBand += Convert.ToInt32(testTextBox.Text);
             updateDisplay("money");
             updateDisplay("rubberBand");
         }
@@ -184,7 +209,7 @@ namespace clickerGame
             }
         }
         
-        idleGenerator worker01 = new idleGenerator(10, 10);
+        idleGenerator worker01 = new idleGenerator(10, 10, 1000);
         private void workerButtom_Click(object sender, EventArgs e)
         {
             if (money >= worker01.nextBuyCost)
@@ -198,7 +223,7 @@ namespace clickerGame
         {
             if (worker01.broughtAmount >= worker01.nextUpgradeExpCost)
             {
-                worker01.broughtAmount -= worker01.upgradeExp();
+                worker01.upgradeExp();
                 workerUpgradeExpButton.Text = "Upgrade Worker ^ 1.1 costs " + worker01.nextUpgradeExpCost + " workers";
                 updateDisplay("idleGenerator");
                 UpgradeWorkerLabel.Text = "Worker Efficiency ^ " + Math.Pow(1.1, worker01.upgradeExpAmount);
@@ -216,7 +241,7 @@ namespace clickerGame
                 WorkerUpgradeAddLabel.Text = "Worker + " + worker01.upgradeAddAmount * 10 + " / sec";
             }
         }
-        idleGenerator machine01 = new idleGenerator(10, 270);
+        idleGenerator machine01 = new idleGenerator(40, 270, 10000);
         private void machineButton_Click(object sender, EventArgs e)
         {
             if (money >= machine01.nextBuyCost)
@@ -226,8 +251,30 @@ namespace clickerGame
                 updateDisplay("idleGenerator");
             }
         }
-
-        idleGenerator productionLine01 = new idleGenerator(10, 700);
+        private void machineUpgradeExpButton_Click(object sender, EventArgs e)
+        {
+            if (machine01.broughtAmount >= machine01.nextUpgradeExpCost)
+            {
+                machine01.upgradeExp();
+                machineUpgradeExpButton.Text = "Upgrade machine ^ 1.1 costs " + machine01.nextUpgradeExpCost + " machines";
+                updateDisplay("idleGenerator");
+                upgradeMachineLabel.Text = "machine Efficiency ^ " + Math.Pow(1.1, machine01.upgradeExpAmount);
+            }
+        }
+        private void machineUpgradeAddButton_Click(object sender, EventArgs e)
+        {
+            {
+                if (money >= machine01.nextUpgradeAddCost)
+                {
+                    money -= machine01.upgradeAdd();
+                    updateDisplay("money");
+                    updateDisplay("idleGenerator");
+                    machineUpgradeAddButton.Text = "Upgrade machine +10 costs $" + machine01.nextUpgradeAddCost.ToString("e2");
+                    machineUpgradeAddLabel.Text = "Wachine + " + machine01.upgradeAddAmount * 10 + " / sec";
+                }
+            }
+        }
+        idleGenerator productionLine01 = new idleGenerator(100, 700, 100000);
         private void productionLineButton_Click(object sender, EventArgs e)
         {
             if (money >= productionLine01.nextBuyCost)
@@ -406,8 +453,6 @@ namespace clickerGame
             }
             updateDisplay("money");
         }
-        Random Random01 = new Random();
-
         private void gambleAllMoneyButton_Click(object sender, EventArgs e)
         {
             casinoRandomNumberBox.Text = "" + money;
@@ -421,11 +466,6 @@ namespace clickerGame
         private void catTextButton_Click(object sender, EventArgs e)
         {
             catTextButton.Text = catAction01.normalSpeech();
-        }
-
-        private void machineUpgradeExpButton_Click(object sender, EventArgs e)
-        {
-            
         }
     }
 }
